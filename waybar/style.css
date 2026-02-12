@@ -8,15 +8,15 @@
 }
 
 #workspaces {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(30, 30, 46, 0.2);
   margin: 4px 6px;
   padding: 0 4px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #workspaces button {
-  color: #a6e3a1; /* Mint/Green from image */
+  color: #a6e3a1;
   padding: 0 8px;
   font-weight: 900;
 }
@@ -42,40 +42,30 @@
 #custom-weather,
 #custom-swaync,
 #bluetooth {
-  background: rgba(255, 255, 255, 0.03); /* Ultra-low opacity glass */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle edge */
+  background: rgba(255, 255, 255, 0.05); /* Increased slightly from 0.03 for visibility */
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 0 16px;
   margin: 4px 4px;
   font-weight: 900;
-  color: #a6e3a1; /* Mint/Green from image */
+  color: #a6e3a1;
 }
 
-/* Force Mint color for nested text/icons */
-label, 
-#battery, 
-#backlight, 
-#pulseaudio, 
-#network, 
-#clock, 
-#tray,
-#custom-swaync,
-#bluetooth {
-  color: #a6e3a1 !important;
+label {
+  color: #a6e3a1;
 }
 
 #custom-launcher, #custom-power-menu {
   font-size: 20px;
 }
 
-/* Preserve traffic light logic (SEMAFORO) */
 #battery.critical:not(.charging) {
   background-color: #f38ba8;
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 #temperature.critical {
-  color: #f38ba8 !important;
+  color: #f38ba8;
 }
 
 #waybar span {
@@ -85,6 +75,5 @@ label,
 #custom-separator {
   background: transparent;
   border: none;
-  box-shadow: none;
   color: rgba(255, 255, 255, 0.1);
 }

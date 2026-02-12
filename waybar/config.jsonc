@@ -396,7 +396,7 @@
   "custom/bar-toggle": {
     "format": "󰃠 ",
     "tooltip": "Alternar estilo de barra (Cápsulas / Completo)",
-    "on-click": "/home/lro/.config/waybar/scripts/toggle_bar.sh",
+    "on-click": "bash /home/lro/.config/waybar/scripts/toggle_bar.sh",
   },
   "custom/separator#dot-line": {
     "format": "",
