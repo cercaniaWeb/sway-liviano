@@ -1,5 +1,5 @@
 /*
- * High Contrast Accessibility Style for Waybar
+ * High Contrast Lavender/Blue Theme - Unified Icon Colors
  */
 
 * {
@@ -11,21 +11,21 @@
 @import url("theme.css");
 
 #workspaces {
-  background: rgba(30, 30, 46, 0.5);
+  background: rgba(30, 30, 46, 0.4);
   margin: 4px 6px;
   padding: 0 4px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(137, 180, 250, 0.3);
 }
 
 #workspaces button {
-  color: #ffffff;
+  color: #89b4fa; /* Unified High-visibility Blue */
   padding: 0 8px;
   font-weight: 900;
 }
 
 #workspaces button.active {
-  color: #fab387;
+  color: #fab387; /* Active Peach */
   border-bottom: 3px solid #fab387;
 }
 
@@ -43,16 +43,16 @@
 #custom-power-menu,
 #custom-bar-toggle,
 #custom-weather {
-  background: rgba(45, 45, 60, 0.85);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(30, 30, 46, 0.7);
+  border: 2px solid rgba(137, 180, 250, 0.4);
   border-radius: 12px;
-  padding: 0 15px;
-  margin: 4px 5px;
+  padding: 0 16px;
+  margin: 4px 4px;
   font-weight: 900;
-  color: #ffffff;
+  color: #89b4fa !important; /* Unified High-visibility Blue */
 }
 
-/* Explicitly force white for all text elements */
+/* Force same color for nested elements */
 label, 
 #battery, 
 #backlight, 
@@ -60,20 +60,22 @@ label,
 #network, 
 #clock, 
 #tray {
-  color: #ffffff;
+  color: #89b4fa !important;
 }
 
 #custom-launcher {
   font-size: 20px;
+  color: #cba6f7 !important; /* Mauve for Launcher to distinguish */
 }
 
 #custom-power-menu {
   font-size: 20px;
+  color: #f38ba8 !important; /* Red for Power to distinguish */
 }
 
 #battery.critical:not(.charging) {
   background-color: #f38ba8;
-  color: #ffffff;
+  color: #ffffff !important; /* White on red background for critical */
 }
 
 #tray > .passive {
