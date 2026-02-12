@@ -62,11 +62,17 @@ Special kernel parameters applied in `/etc/sysctl.d/99-zram-optimization.conf`:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/dotfiles.git ~/dotfiles
+   git clone https://github.com/cercaniaWeb/sway-liviano.git ~/dotfiles
    cd ~/dotfiles
    ```
 
-2. **Run the setup script**:
+2. **Install Dependencies (Arch Linux/AUR)**:
+   ```bash
+   chmod +x install_deps.sh
+   ./install_deps.sh
+   ```
+
+3. **Deploy Configs**:
    ```bash
    chmod +x setup.sh
    ./setup.sh
