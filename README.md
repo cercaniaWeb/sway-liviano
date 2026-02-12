@@ -20,6 +20,9 @@
 ###  Neovim (Mocha Theme)
 ![Neovim](assets/screenshots/neovim.png)
 
+### 🚀 Full Environment (Launcher + Control Center)
+![Full Setup](assets/screenshots/full_setup.png)
+
 ---
 
 ## ✨ Features
