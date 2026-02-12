@@ -1,15 +1,10 @@
-/*
- * High Contrast Lavender/Blue Theme - Unified Icon Colors
- */
-
+/* High Contrast Theme */
 * {
   font-family: "JetBrainsMono Nerd Font", "Iosevka Nerd Font", Lexend;
   font-size: 14px;
   min-height: 0;
 }
-
 @import url("theme.css");
-
 #workspaces {
   background: rgba(30, 30, 46, 0.4);
   margin: 4px 6px;
@@ -17,18 +12,15 @@
   border-radius: 12px;
   border: 1px solid rgba(138, 173, 244, 0.4);
 }
-
 #workspaces button {
-  color: #8aadf4; /* Catppuccin Blue - Matching Workspaces */
+  color: #8aadf4;
   padding: 0 8px;
   font-weight: 900;
 }
-
 #workspaces button.active {
-  color: #fab387; /* Active Peach */
+  color: #fab387;
   border-bottom: 3px solid #fab387;
 }
-
 #window,
 #temperature,
 #cpu,
@@ -46,56 +38,27 @@
 #custom-swaync,
 #bluetooth,
 #custom-separator {
-  background: rgba(30, 30, 46, 0.7);
-  border: 1px solid rgba(138, 173, 244, 0.4);
+  background: rgba(30,30,46,0.7);
+  border: 1px solid rgba(138,173,244,0.4);
   border-radius: 12px;
   padding: 0 16px;
   margin: 4px 4px;
   font-weight: 900;
-  color: #8aadf4 !important; /* Unified Blue Icon color */
+  color: #8aadf4;
 }
-
-/* Force same color for nested elements */
-label, 
-#battery, 
-#backlight, 
-#pulseaudio, 
-#network, 
-#clock, 
-#tray,
-#custom-swaync,
-#bluetooth {
-  color: #8aadf4 !important;
+label, #battery, #backlight, #pulseaudio, #network, #clock, #tray, #custom-swaync, #bluetooth {
+  color: #8aadf4;
 }
-
-#custom-launcher {
+#custom-launcher, #custom-power-menu {
   font-size: 20px;
 }
-
-#custom-power-menu {
-  font-size: 20px;
-}
-
-#custom-bar-toggle {
-  font-size: 18px;
-}
-
 #battery.critical:not(.charging) {
   background-color: #f38ba8;
-  color: #ffffff !important;
+  color: #ffffff;
 }
-
 #tray > .passive {
   -gtk-icon-effect: none;
 }
-
-/* Fix for icons that might be inside a group or span */
 #waybar span {
-    color: #8aadf4 !important;
-}
-
-#custom-separator {
-    background: transparent;
-    border: none;
-    color: rgba(138, 173, 244, 0.4) !important;
+  color: #8aadf4;
 }
