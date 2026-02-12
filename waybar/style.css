@@ -1,26 +1,30 @@
-/* High Contrast Theme */
+/* High Contrast Theme - Subtle Borders Edition */
 * {
   font-family: "JetBrainsMono Nerd Font", "Iosevka Nerd Font", Lexend;
   font-size: 14px;
   min-height: 0;
 }
 @import url("theme.css");
+
 #workspaces {
   background: rgba(30, 30, 46, 0.4);
   margin: 4px 6px;
   padding: 0 4px;
   border-radius: 12px;
-  border: 1px solid rgba(138, 173, 244, 0.4);
+  border: 1px solid rgba(205, 214, 244, 0.1); /* Subtle original border */
 }
+
 #workspaces button {
   color: #8aadf4;
   padding: 0 8px;
   font-weight: 900;
 }
+
 #workspaces button.active {
   color: #fab387;
   border-bottom: 3px solid #fab387;
 }
+
 #window,
 #temperature,
 #cpu,
@@ -39,26 +43,31 @@
 #bluetooth,
 #custom-separator {
   background: rgba(30,30,46,0.7);
-  border: 1px solid rgba(138,173,244,0.4);
+  border: 1px solid rgba(205, 214, 244, 0.1); /* Subtle original border */
   border-radius: 12px;
   padding: 0 16px;
   margin: 4px 4px;
   font-weight: 900;
   color: #8aadf4;
 }
+
 label, #battery, #backlight, #pulseaudio, #network, #clock, #tray, #custom-swaync, #bluetooth {
   color: #8aadf4;
 }
+
 #custom-launcher, #custom-power-menu {
   font-size: 20px;
 }
+
 #battery.critical:not(.charging) {
   background-color: #f38ba8;
   color: #ffffff;
 }
+
 #tray > .passive {
   -gtk-icon-effect: none;
 }
+
 #waybar span {
   color: #8aadf4;
 }
