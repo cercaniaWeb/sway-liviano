@@ -26,6 +26,11 @@
 ### 📊 Interactive Shortcut Dashboard
 ![Dashboard](assets/screenshots/dashboard.png)
 
+### 🔳 Waybar Style Toggle
+| **Modo Completo** | **Modo Cápsulas (Transparente)** |
+|:---:|:---:|
+| ![Waybar Full](assets/screenshots/waybar_full.png) | ![Waybar Capsules](assets/screenshots/waybar_capsules.png) |
+
 ---
 
 ## ✨ Features
