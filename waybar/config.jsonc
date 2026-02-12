@@ -394,7 +394,7 @@
     "on-click": "rofi -show drun -theme ~/.config/rofi/type1.rasi &",
   },
   "custom/bar-toggle": {
-    "format": "🔳",
+    "format": "󰃠 ",
     "tooltip": "Alternar estilo de barra (Cápsulas / Completo)",
     "on-click": "/home/lro/.config/waybar/scripts/toggle_bar.sh",
   },

@@ -1,3 +1,4 @@
+@import url("theme.css");
 /*
  * Catppuccin Mocha Waybar Style - Premium Glassmorphism Overhaul
  */
@@ -8,15 +9,6 @@
   min-height: 0;
 }
 
-window#waybar {
-  background: none !important; /* TOGGLE_STATE */
-  /* TOGGLE_STATE */
-  border-bottom: none !important; /* TOGGLE_STATE */
-  /* TOGGLE_STATE */
-  color: #cdd6f4;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-}
 
 #workspaces {
   background: rgba(30, 30, 46, 0.5);
@@ -56,14 +48,19 @@ window#waybar {
 #battery,
 #custom-launcher,
 #custom-power-menu,
+#custom-bar-toggle,
 #custom-weather {
-  background: rgba(30, 30, 46, 0.6);
-  border: 1px solid rgba(205, 214, 244, 0.1);
+  background: rgba(49, 50, 68, 0.9);
+  /* More opaque background for better contrast */
+  border: 2px solid rgba(205, 214, 244, 0.3);
+  /* Thicker, brighter border */
   border-radius: 12px;
   padding: 0 14px;
   margin: 4px 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+  font-weight: bold;
+  /* Bold text for easier reading */
 }
 
 #window:hover,
@@ -76,48 +73,63 @@ window#waybar {
 #battery:hover,
 #custom-launcher:hover,
 #custom-power-menu:hover {
-  background: rgba(49, 50, 68, 0.8);
-  border: 1px solid rgba(137, 180, 250, 0.3);
+  background: rgba(69, 71, 90, 1);
+  border: 2px solid rgba(137, 180, 250, 0.6);
 }
 
 #custom-launcher {
-  color: #cba6f7;
-  background: linear-gradient(45deg, rgba(203, 166, 247, 0.1) 0%, rgba(30, 30, 46, 0.6) 100%);
-  font-size: 16px;
+  color: #f5c2e7;
+  /* Brighter Pink/Mauve */
+  background: linear-gradient(45deg, rgba(203, 166, 247, 0.3) 0%, rgba(49, 50, 68, 0.9) 100%);
+  font-size: 18px;
 }
 
 #custom-power-menu {
-  color: #f38ba8;
-  background: linear-gradient(45deg, rgba(243, 139, 168, 0.1) 0%, rgba(30, 30, 46, 0.6) 100%);
+  color: #ff7e33;
+  /* High contrast Orange/Red */
+  background: linear-gradient(45deg, rgba(243, 139, 168, 0.3) 0%, rgba(49, 50, 68, 0.9) 100%);
+  font-size: 18px;
+}
+
+#custom-bar-toggle {
+  color: #89b4fa;
+  /* High contrast Blue */
   font-size: 16px;
 }
 
 #cpu {
-  color: #f38ba8;
+  color: #ff5555;
+  /* Super bright Red */
 }
 
 #memory {
-  color: #a6e3a1;
+  color: #50fa7b;
+  /* Super bright Green */
 }
 
 #temperature {
-  color: #f9e2af;
+  color: #ffb86c;
+  /* Super bright Orange */
 }
 
 #pulseaudio {
-  color: #89b4fa;
+  color: #8be9fd;
+  /* High contrast Cyan */
 }
 
 #network {
-  color: #89dceb;
+  color: #bd93f9;
+  /* High contrast Purple */
 }
 
 #clock {
-  color: #b4befe;
+  color: #ffffff;
+  /* pure white for maximum legibility */
 }
 
 #custom-weather {
-  color: #fab387;
+  color: #f1fa8c;
+  /* Super bright Yellow */
 }
 
 /* Tooltips */
