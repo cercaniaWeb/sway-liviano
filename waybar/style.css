@@ -50,17 +50,16 @@
 #custom-power-menu,
 #custom-bar-toggle,
 #custom-weather {
-  background: rgba(49, 50, 68, 0.9);
-  /* More opaque background for better contrast */
-  border: 2px solid rgba(205, 214, 244, 0.3);
-  /* Thicker, brighter border */
+  background: rgba(30, 30, 46, 0.6);
+  /* Reverted to subtle background */
+  border: 1px solid rgba(205, 214, 244, 0.2);
+  /* Reverted to 1px border */
   border-radius: 12px;
   padding: 0 14px;
   margin: 4px 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
   font-weight: bold;
-  /* Bold text for easier reading */
 }
 
 #window:hover,
@@ -73,63 +72,69 @@
 #battery:hover,
 #custom-launcher:hover,
 #custom-power-menu:hover {
-  background: rgba(69, 71, 90, 1);
-  border: 2px solid rgba(137, 180, 250, 0.6);
+  background: rgba(49, 50, 68, 0.8);
+  border: 1px solid rgba(137, 180, 250, 0.4);
 }
 
 #custom-launcher {
-  color: #f5c2e7;
-  /* Brighter Pink/Mauve */
-  background: linear-gradient(45deg, rgba(203, 166, 247, 0.3) 0%, rgba(49, 50, 68, 0.9) 100%);
+  color: #ffffff;
+  /* Clean white */
+  background: linear-gradient(45deg, rgba(203, 166, 247, 0.2) 0%, rgba(30, 30, 46, 0.6) 100%);
   font-size: 18px;
 }
 
 #custom-power-menu {
-  color: #ff7e33;
-  /* High contrast Orange/Red */
-  background: linear-gradient(45deg, rgba(243, 139, 168, 0.3) 0%, rgba(49, 50, 68, 0.9) 100%);
+  color: #ffffff;
+  /* Clean white */
+  background: linear-gradient(45deg, rgba(243, 139, 168, 0.2) 0%, rgba(30, 30, 46, 0.6) 100%);
   font-size: 18px;
 }
 
 #custom-bar-toggle {
-  color: #89b4fa;
-  /* High contrast Blue */
+  color: #ffffff;
+  /* Clean white */
   font-size: 16px;
 }
 
 #cpu {
-  color: #ff5555;
-  /* Super bright Red */
+  color: #ffffff;
 }
 
 #memory {
-  color: #50fa7b;
-  /* Super bright Green */
+  color: #ffffff;
 }
 
 #temperature {
-  color: #ffb86c;
-  /* Super bright Orange */
+  color: #ffffff;
 }
 
 #pulseaudio {
-  color: #8be9fd;
-  /* High contrast Cyan */
+  color: #ffffff;
 }
 
 #network {
-  color: #bd93f9;
-  /* High contrast Purple */
+  color: #ffffff;
 }
 
 #clock {
   color: #ffffff;
-  /* pure white for maximum legibility */
 }
 
 #custom-weather {
-  color: #f1fa8c;
-  /* Super bright Yellow */
+  color: #ffffff;
+}
+
+#tray {
+  color: #ffffff;
+}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #f38ba8;
 }
 
 /* Tooltips */

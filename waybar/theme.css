@@ -1,4 +1,4 @@
 window#waybar {
-    background: transparent;
-    border-bottom: none;
+    background: rgba(30, 30, 46, 0.4);
+    border-bottom: 2px solid rgba(180, 190, 254, 0.2);
 }
