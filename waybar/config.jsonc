@@ -337,7 +337,7 @@
     "format-plugged": "Plugged",
     "tooltip": true,
     "tooltip-format": "{capacity}%",
-    "format-full": "Full",
+    "format-full": "󰂄 100%",
     "format-icons": [
       "",
       "",
