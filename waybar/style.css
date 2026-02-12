@@ -16,7 +16,7 @@
 }
 
 #workspaces button {
-  color: #a6e3a1; /* Keep icons/workspaces Mint */
+  color: #a6e3a1;
   padding: 0 8px;
   font-weight: 900;
 }
@@ -42,16 +42,15 @@
 #custom-weather,
 #custom-swaync,
 #bluetooth {
-  background: rgba(255, 255, 255, 0.05); /* Premium Glass */
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 0 16px;
   margin: 4px 4px;
   font-weight: 900;
-  color: #8aadf4; /* Catppuccin Blue for LETTERS/NUMBERS */
+  color: #8aadf4;
 }
 
-/* Base text color for all modules */
 label {
   color: #8aadf4;
 }
@@ -60,23 +59,17 @@ label {
   font-size: 20px;
 }
 
-/* SEMAFORO Support - Critical states stay Red */
 #battery.critical:not(.charging) {
   background-color: #f38ba8;
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 #temperature.critical {
-  color: #f38ba8 !important;
+  color: #f38ba8;
 }
 
-/* Tray icons usually handle their own colors but let's ensure they are visible */
 #tray {
-    color: #a6e3a1;
-}
-
-#waybar span {
-  /* This will be overridden by Pango markup in config.jsonc if specific colors are set */
+  color: #a6e3a1;
 }
 
 #custom-separator {
