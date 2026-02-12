@@ -142,11 +142,11 @@ bindsym $mainMod+Control+9 move container to workspace number 9
 bindsym $mainMod+Control+0 move container to workspace number 10
 
 # Media Keys
-bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && bash /home/lro/.config/waybar/scripts/volume_notification.sh
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && bash /home/lro/.config/waybar/scripts/volume_notification.sh
-bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && bash /home/lro/.config/waybar/scripts/volume_notification.sh
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume lower
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous

@@ -1,23 +1,22 @@
 window#osd, .osd, #container, box, stack {
-    background: none !important;
-    background-color: rgba(0,0,0,0) !important;
-    border: none !important;
-    box-shadow: none !important;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 image#icon {
-    color: #f5c2e7 !important;
-    background: none !important;
+    color: #f5c2e7;
+    background: transparent;
 }
 
 progressbar trough {
-    background-color: rgba(49, 50, 68, 0.4) !important;
+    background-color: rgba(49, 50, 68, 0.4);
     min-height: 12px;
     border-radius: 6px;
-    border: none !important;
+    border: none;
 }
 
 progressbar progress {
-    background-color: #f5c2e7 !important;
+    background-color: #f5c2e7;
     border-radius: 6px;
 }
