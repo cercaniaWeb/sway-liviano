@@ -9,6 +9,19 @@
 
 ---
 
+## 📸 Showcase
+
+### 🖥️ Desktop Overview
+![Desktop](assets/screenshots/desktop.png)
+
+### 🔔 Control Center & Notifications
+![Sidebar](assets/screenshots/sidebar.png)
+
+###  Neovim (Mocha Theme)
+![Neovim](assets/screenshots/neovim.png)
+
+---
+
 ## ✨ Features
 
 - **🎨 Theme**: Catppuccin Mocha everywhere (Terminal, WM, Sidebar).
