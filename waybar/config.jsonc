@@ -217,7 +217,7 @@
     // "max-length": 7
   },
   "backlight#icon": {
-    "format": "{icon}",
+    "format": "<span color='#a6e3a1'>{icon}</span>",
     "format-icons": [
       "",
       "",
@@ -243,9 +243,9 @@
   },
   "network": {
     /* "format-wifi": "直", */
-    "format-wifi": "{icon}",
-    "format-ethernet": " ",
-    "format-disconnected": "睊",
+    "format-wifi": "<span color='#a6e3a1'>{icon}</span>",
+    "format-ethernet": "<span color='#a6e3a1'> </span>",
+    "format-disconnected": "<span color='#a6e3a1'>睊</span>",
     "tooltip-format": "{essid}",
     "on-click": "~/.config/waybar/scripts/network/rofi-network-manager.sh",
     "format-icons": [
@@ -257,11 +257,11 @@
     ],
   },
   "bluetooth": {
-    "format": "󰂯",
-    "format-connected": "󰂱 {device_alias}",
-    "format-connected-battery": "󰂱 {device_alias} {device_battery_percentage}%",
-    "format-disabled": "󰂲",
-    "format-off": "󰂲",
+    "format": "<span color='#a6e3a1'>󰂯</span>",
+    "format-connected": "<span color='#a6e3a1'>󰂱</span> {device_alias}",
+    "format-connected-battery": "<span color='#a6e3a1'>󰂱</span> {device_alias} {device_battery_percentage}%",
+    "format-disabled": "<span color='#a6e3a1'>󰂲</span>",
+    "format-off": "<span color='#a6e3a1'>󰂲</span>",
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
