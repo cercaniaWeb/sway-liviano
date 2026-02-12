@@ -9,8 +9,10 @@
 }
 
 window#waybar {
-  background: rgba(30, 30, 46, 0.4);
-  border-bottom: 2px solid rgba(180, 190, 254, 0.2);
+  background: none !important; /* TOGGLE_STATE */
+  /* TOGGLE_STATE */
+  border-bottom: none !important; /* TOGGLE_STATE */
+  /* TOGGLE_STATE */
   color: #cdd6f4;
   transition-property: background-color;
   transition-duration: 0.5s;

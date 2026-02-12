@@ -28,6 +28,8 @@
     "custom/swaync",
     "tray",
     "custom/separator#dot-line",
+    "custom/bar-toggle",
+    "custom/separator#dot-line",
     "custom/power-menu"
   ],
   "sway/workspaces": {
@@ -390,6 +392,11 @@
   "custom/launcher": {
     "format": "",
     "on-click": "rofi -show drun -theme ~/.config/rofi/type1.rasi &",
+  },
+  "custom/bar-toggle": {
+    "format": "🔳",
+    "tooltip": "Alternar estilo de barra (Cápsulas / Completo)",
+    "on-click": "/home/lro/.config/waybar/scripts/toggle_bar.sh",
   },
   "custom/separator#dot-line": {
     "format": "",
