@@ -126,8 +126,8 @@
   },
   "clock#time": {
     // "tooltip": false,
-    "format": "  {:%H:%M:%S}",
-    "format-alt": "  {:%a, %d %b}",
+    "format": "<span color='#a6e3a1'> </span> {:%H:%M:%S}",
+    "format-alt": "<span color='#a6e3a1'> </span> {:%a, %d %b}",
     "interval": 1,
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
@@ -149,7 +149,7 @@
   "clock#date": {
     // "tooltip": false,
     // "format": "  {:%H:%M:%S}",
-    "format": "   {:%A, %d %B}",
+    "format": " <span color='#a6e3a1'> </span> {:%A, %d %B}",
     "interval": 1,
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
@@ -177,8 +177,8 @@
     ],
     //"thermal-zone": 0,
     "critical-threshold": 82,
-    "format-critical": "{temperatureC}°C {icon}",
-    "format": "{icon} {temperatureC}°C",
+    "format-critical": "<span color='#f38ba8'>{temperatureC}°C {icon}</span>",
+    "format": "<span color='#a6e3a1'>{icon}</span> {temperatureC}°C",
     "format-icons": [
       "󰈸"
     ],
@@ -209,8 +209,8 @@
       "warning": 75,
       "critical": 90,
     },
-    "format": "  {percentage}%",
-    "format-critical": "󰀦 {percentage}%",
+    "format": "<span color='#a6e3a1'> </span> {percentage}%",
+    "format-critical": "<span color='#f38ba8'>󰀦 {percentage}%</span>",
     "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
     "interval": 5,
     // "min-length": 7,
@@ -268,8 +268,8 @@
     "on-click": "blueman-manager"
   },
   "pulseaudio": {
-    "format": "{icon} <span font='11'>{volume}%</span>",
-    "format-muted": "婢",
+    "format": "<span color='#a6e3a1'>{icon}</span> <span font='11'>{volume}%</span>",
+    "format-muted": "<span color='#a6e3a1'>婢</span>",
     "format-icons": {
       "default": [
         "",
@@ -285,10 +285,10 @@
     "tooltip-format": "{volume}%",
   },
   "pulseaudio#microphone": {
-    "format": "{format_source} | <span font='11'>{source_volume}% </span>",
+    "format": "<span color='#a6e3a1'>{format_source}</span> | <span font='11'>{source_volume}% </span>",
     "format-source": "",
     // "format-source-muted": "󰍭<span font-family='Lexend' size='11000'> Muted</span>",
-    "format-source-muted": "󰍭",
+    "format-source-muted": "<span color='#a6e3a1'>󰍭</span>",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
     "on-click-middle": "",
     "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 1%+",
@@ -330,14 +330,14 @@
       "critical": 15,
     },
     "max-length": 20,
-    "format": "{capacity}%",
-    "format-warning": "{capacity}%",
-    "format-critical": "{capacity}%",
-    "format-charging": "{capacity}%",
-    "format-plugged": "Plugged",
+    "format": "<span color='#a6e3a1'>{capacity}%</span>",
+    "format-warning": "<span color='#fab387'>{capacity}%</span>",
+    "format-critical": "<span color='#f38ba8'>{capacity}%</span>",
+    "format-charging": "<span color='#a6e3a1'>{capacity}%</span>",
+    "format-plugged": "<span color='#a6e3a1'>Plugged</span>",
     "tooltip": true,
     "tooltip-format": "{capacity}%",
-    "format-full": "󰂄 100%",
+    "format-full": "<span color='#a6e3a1'>󰂄 100%</span>",
     "format-icons": [
       "",
       "",
@@ -386,15 +386,15 @@
     "on-scroll-down": "playerctl previous",
   },
   "custom/power-menu": {
-    "format": " ⏻ ",
+    "format": " <span color='#a6e3a1'>⏻ </span>",
     "on-click": "bash /home/lro/.config/rofi/powermenu.sh &",
   },
   "custom/launcher": {
-    "format": "",
+    "format": "<span color='#a6e3a1'></span>",
     "on-click": "rofi -show drun -theme ~/.config/rofi/type1.rasi &",
   },
   "custom/bar-toggle": {
-    "format": "󰃠 ",
+    "format": "<span color='#a6e3a1'>󰃠 </span>",
     "tooltip": "Alternar estilo de barra (Cápsulas / Completo)",
     "on-click": "bash /home/lro/.config/waybar/scripts/toggle_bar.sh",
   },
@@ -429,16 +429,16 @@
   "custom/swaync": {
     "tooltip": true,
     "tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
-    "format": "{} {icon} ",
+    "format": "{} <span color='#a6e3a1'>{icon}</span>",
     "format-icons": {
-      "notification": "<span><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span><sup></sup></span>",
-      "dnd-inhibited-none": "",
+      "notification": "<span color='#a6e3a1'><span><sup></sup></span></span>",
+      "none": "<span color='#a6e3a1'></span>",
+      "dnd-notification": "<span color='#a6e3a1'><span><sup></sup></span></span>",
+      "dnd-none": "<span color='#a6e3a1'></span>",
+      "inhibited-notification": "<span color='#a6e3a1'><span><sup></sup></span></span>",
+      "inhibited-none": "<span color='#a6e3a1'></span>",
+      "dnd-inhibited-notification": "<span color='#a6e3a1'><span><sup></sup></span></span>",
+      "dnd-inhibited-none": "<span color='#a6e3a1'></span>",
     },
     "return-type": "json",
     "exec-if": "which swaync-client",

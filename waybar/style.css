@@ -1,4 +1,4 @@
-/* High Contrast Theme - Mint Glass Edition */
+/* High Contrast Theme - Blue Text & Mint Icons */
 @import url("theme.css");
 
 * {
@@ -16,7 +16,7 @@
 }
 
 #workspaces button {
-  color: #a6e3a1;
+  color: #a6e3a1; /* Keep icons/workspaces Mint */
   padding: 0 8px;
   font-weight: 900;
 }
@@ -42,34 +42,41 @@
 #custom-weather,
 #custom-swaync,
 #bluetooth {
-  background: rgba(255, 255, 255, 0.05); /* Increased slightly from 0.03 for visibility */
+  background: rgba(255, 255, 255, 0.05); /* Premium Glass */
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 0 16px;
   margin: 4px 4px;
   font-weight: 900;
-  color: #a6e3a1;
+  color: #8aadf4; /* Catppuccin Blue for LETTERS/NUMBERS */
 }
 
+/* Base text color for all modules */
 label {
-  color: #a6e3a1;
+  color: #8aadf4;
 }
 
 #custom-launcher, #custom-power-menu {
   font-size: 20px;
 }
 
+/* SEMAFORO Support - Critical states stay Red */
 #battery.critical:not(.charging) {
   background-color: #f38ba8;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 #temperature.critical {
-  color: #f38ba8;
+  color: #f38ba8 !important;
+}
+
+/* Tray icons usually handle their own colors but let's ensure they are visible */
+#tray {
+    color: #a6e3a1;
 }
 
 #waybar span {
-  color: #a6e3a1;
+  /* This will be overridden by Pango markup in config.jsonc if specific colors are set */
 }
 
 #custom-separator {
