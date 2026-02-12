@@ -1,0 +1,19 @@
+return {
+    "David-Kunz/gen.nvim",
+    opts = {
+        model = "qwen2.5-coder:1.5b", -- Modelo ligero optimizado para 8GB RAM
+        display_mode = "float", 
+        show_prompt = true,
+        show_model = true,
+        no_auto_close = false,
+        init = function()
+            -- Forzar descarga de RAM al terminar
+            vim.fn.setenv("OLLAMA_KEEP_ALIVE", "0")
+        end
+    },
+    config = function(_, opts)
+        require('gen').setup(opts)
+        -- Atajo de teclado: Leader + ai
+        vim.keymap.set({ 'n', 'v' }, '<leader>ai', ':Gen<CR>', { desc = "IA Menu (Ollama)" })
+    end
+}

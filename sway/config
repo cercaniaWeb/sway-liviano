@@ -1,0 +1,187 @@
+# greed-d's Sway Configuration Adaption
+# Optimized for Sway while maintaining the aesthetic of Hyprland/Niri
+
+### SETTINGS ###
+set $mainMod Mod4
+set $terminal alacritty
+set $fileManager nautilus
+set $menu rofi -show drun -theme ~/.config/rofi/type1.rasi
+set $browser thorium-browser
+set $disc_client discord
+
+### APPEARANCE ###
+# Colors (Catppuccin Mocha)
+set $base #1e1e2e
+set $mantle #181825
+set $crust #11111b
+set $text #cdd6f4
+set $subtext0 #a6adc8
+set $subtext1 #bac2de
+set $surface0 #313244
+set $surface1 #45475a
+set $surface2 #585b70
+set $overlay0 #6c7086
+set $overlay1 #7f849c
+set $overlay2 #9399b2
+set $blue #89b4fa
+set $lavender #b4befe
+set $sapphire #74c7ec
+set $sky #89dceb
+set $teal #94e2d5
+set $green #a6da95
+set $yellow #f9e2af
+set $peach #fab387
+set $maroon #eba0ac
+set $red #f38ba8
+set $mauve #cba6f7
+set $pink #f5c2e7
+set $flamingo #f2cdcd
+set $rosewater #f5e0dc
+
+# Wallpaper
+output * bg ~/Pictures/Wallpapers/default_wallpaper.png fill
+
+# Basic colors
+# class                 border    backgr    text    indicator child_border
+client.focused          $mauve    $base     $text   $mauve    $mauve
+client.focused_inactive $surface1 $base     $text   $surface1 $surface1
+client.unfocused        $surface1 $base     $text   $surface1 $surface1
+client.urgent           $red      $base     $text   $red      $red
+client.placeholder      $surface0 $base     $text   $surface0 $surface0
+client.background       $base
+
+# Gaps
+gaps inner 3
+gaps outer 5
+default_border pixel 2
+default_floating_border pixel 2
+smart_gaps on
+smart_borders on
+
+### INPUT ###
+input * {
+    xkb_layout "latam"
+    repeat_delay 250
+    repeat_rate 50
+}
+
+input "type:touchpad" {
+    natural_scroll enabled
+    tap enabled
+    dwt enabled
+    middle_emulation enabled
+}
+
+### BINDINGS ###
+# Applications
+bindsym $mainMod+Return exec $terminal
+bindsym $mainMod+r exec pkill rofi || $menu
+bindsym Alt+Space exec pkill rofi || rofi -show window
+bindsym $mainMod+b exec $browser
+bindsym $mainMod+d exec discord
+bindsym $mainMod+Tab workspace next
+bindsym $mainMod+Shift+Tab workspace prev
+bindsym $mainMod+e exec alacritty -e yazi
+bindsym $mainMod+t exec swaync-client -t -sw
+bindsym $mainMod+v exec cliphist list | fuzzel --dmenu --lines 15 | cliphist decode | wl-copy
+bindsym $mainMod+c exec alacritty --class 'calendar' -T 'Calendar' --hold -e cal -3
+bindsym $mainMod+m exec youtube-music
+bindsym $mainMod+o exec obsidian
+bindsym $mainMod+i exec /home/lro/.gemini/antigravity/scratch/dashboard/launch.sh
+bindsym $mainMod+Shift+i exec /home/lro/.gemini/antigravity/scratch/dashboard/launch.sh tmux_shortcuts.html
+bindsym $mainMod+Shift+y exec /home/lro/.gemini/antigravity/scratch/dashboard/launch.sh system_shortcuts.html
+bindsym $mainMod+a exec alacritty -e nvim
+bindsym $mainMod+u [title="scratchpad"] scratchpad show
+bindsym $mainMod+Escape exec swaylock
+bindsym Alt+w exec windsurf
+bindsym $mainMod+g exec antigravity
+bindsym Alt+s exec thorium-browser --app="file:///home/lro/.agent/skills/docs/spanish/index.html" --class="skills"
+bindsym $mainMod+Shift+d exec alacritty --class "dev_env" -e /home/lro/.local/bin/dev-env.sh
+
+
+# Window management
+bindsym $mainMod+q kill
+bindsym $mainMod+s floating toggle
+bindsym $mainMod+f fullscreen toggle
+bindsym $mainMod+p layout toggle split
+bindsym $mainMod+Shift+p split v
+bindsym $mainMod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -b 'Yes' 'swaymsg exit'
+
+# Navigation (Vim style)
+bindsym $mainMod+h focus left
+bindsym $mainMod+j focus down
+bindsym $mainMod+k focus up
+bindsym $mainMod+l focus right
+
+bindsym $mainMod+Shift+h move left
+bindsym $mainMod+Shift+j move down
+bindsym $mainMod+Shift+k move up
+bindsym $mainMod+Shift+l move right
+
+# Workspaces
+bindsym $mainMod+1 workspace number 1
+bindsym $mainMod+2 workspace number 2
+bindsym $mainMod+3 workspace number 3
+bindsym $mainMod+4 workspace number 4
+bindsym $mainMod+5 workspace number 5
+bindsym $mainMod+6 workspace number 6
+bindsym $mainMod+7 workspace number 7
+bindsym $mainMod+8 workspace number 8
+bindsym $mainMod+9 workspace number 9
+bindsym $mainMod+0 workspace number 10
+
+bindsym $mainMod+Control+1 move container to workspace number 1
+bindsym $mainMod+Control+2 move container to workspace number 2
+bindsym $mainMod+Control+3 move container to workspace number 3
+bindsym $mainMod+Control+4 move container to workspace number 4
+bindsym $mainMod+Control+5 move container to workspace number 5
+bindsym $mainMod+Control+6 move container to workspace number 6
+bindsym $mainMod+Control+7 move container to workspace number 7
+bindsym $mainMod+Control+8 move container to workspace number 8
+bindsym $mainMod+Control+9 move container to workspace number 9
+bindsym $mainMod+Control+0 move container to workspace number 10
+
+# Media Keys
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume lower
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Screenshots
+bindsym Print exec grim - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy
+bindsym $mainMod+Shift+s exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy
+
+# Exit/Reload
+bindsym Mod4+Shift+c exec swaymsg reload && notify-send "Sway" "Configuration Reloaded"
+bindsym Mod4+Shift+r exec swaymsg reload && notify-send "Sway" "Configuration Reloaded"
+
+# Gestures (3-finger swipe)
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
+bindgesture swipe:up exec pkill rofi || $menu
+
+# Window Rules
+for_window [app_id="chrome-.*dashboard.*"] floating enable, border none, sticky enable, resize set 1000 800, move position center
+# Dashboard Rules (Thorium XWayland)
+for_window [class="dashboard"] floating enable, border none, sticky enable, resize set 1000 800, move position center
+for_window [instance="home_lro_.gemini_antigravity_scratch_dashboard.*"] floating enable, border none, sticky enable, resize set 1000 800, move position center
+for_window [instance="home_lro_.agent_skills_docs_spanish_index.html"] floating enable, border none, sticky enable, resize set 1100 850, move position center
+
+
+for_window [title="scratchpad"] floating enable, border none, resize set 1000 700, move position center, move scratchpad
+for_window [class="obsidian"] floating enable, resize set 1100 800, move position center
+
+### AUTOSTART ###
+exec swaync
+exec waybar
+exec nm-applet --indicator
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec alacritty --title scratchpad --class scratchpad -e tmux
+exec swayosd-server -s /home/lro/.config/swayosd/style.css --top-margin 0.5
+bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle

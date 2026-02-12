@@ -1,0 +1,162 @@
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
+@define-color text #cdd6f4;
+@define-color subtext #a6adc8;
+@define-color surface #313244;
+@define-color overlay #6c7086;
+@define-color mauve #cba6f7;
+@define-color sapphire #74c7ec;
+@define-color red #f38ba8;
+@define-color green #a6da95;
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: 500;
+}
+
+.control-center {
+  background: alpha(@base, 0.85);
+  border-radius: 24px;
+  border: 1px solid @surface;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 20px;
+}
+
+/* Titles and Labels */
+.widget-title {
+  color: @text;
+  font-size: 1.4rem;
+  margin: 10px;
+}
+
+.widget-label {
+  color: @mauve;
+  font-size: 1rem;
+  margin: 10px 10px 0 10px;
+  font-weight: bold;
+}
+
+/* Monitoring Pills */
+/* Monitoring Pills */
+.system-stats {
+  background: @mantle;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 18px;
+  border: 1px solid @surface;
+  color: @mauve;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Quick Toggles Grid */
+.widget-buttons-grid {
+  padding: 15px;
+  margin: 10px;
+  background: @mantle;
+  border-radius: 18px;
+  border: 1px solid @surface;
+}
+
+.widget-buttons-grid>button {
+  background: @surface;
+  border-radius: 14px;
+  margin: 6px;
+  min-width: 65px;
+  min-height: 50px;
+  color: @text;
+  font-size: 1.4rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.widget-buttons-grid>button:hover {
+  background: alpha(@mauve, 0.2);
+  color: @mauve;
+  border: 1px solid @mauve;
+  box-shadow: 0 0 10px alpha(@mauve, 0.3);
+}
+
+/* MPRIS Media Widget */
+.widget-mpris {
+  background: @mantle;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 1px solid @surface;
+}
+
+.widget-mpris-player {
+  padding: 5px;
+}
+
+.widget-mpris-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: @mauve;
+}
+
+.widget-mpris-subtitle {
+  color: @subtext;
+  font-size: 1rem;
+}
+
+/* Sliders */
+.widget-volume,
+.widget-backlight {
+  background: @mantle;
+  padding: 20px;
+  margin: 8px 10px;
+  border-radius: 16px;
+  border: 1px solid @surface;
+}
+
+trough {
+  min-height: 12px;
+  background: @surface;
+  border-radius: 10px;
+}
+
+highlight {
+  background: linear-gradient(to right, @mauve, @sapphire);
+  border-radius: 10px;
+}
+
+/* Notifications */
+.notification-row {
+  margin: 8px 10px;
+}
+
+.notification-background {
+  background: @mantle;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid @surface;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.summary {
+  font-weight: bold;
+  font-size: 1.15rem;
+  color: @mauve;
+}
+
+.body {
+  color: @text;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Custom Calendar Label */
+#calendar-label {
+  font-family: "JetBrainsMono Nerd Font Mono";
+  font-size: 0.95rem;
+  color: @text;
+  background: @mantle;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 1px solid @surface;
+}
