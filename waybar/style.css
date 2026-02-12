@@ -15,11 +15,11 @@
   margin: 4px 6px;
   padding: 0 4px;
   border-radius: 12px;
-  border: 1px solid rgba(137, 180, 250, 0.3);
+  border: 1px solid rgba(138, 173, 244, 0.4);
 }
 
 #workspaces button {
-  color: #89b4fa; /* Unified High-visibility Blue */
+  color: #8aadf4; /* Catppuccin Blue - Matching Workspaces */
   padding: 0 8px;
   font-weight: 900;
 }
@@ -42,14 +42,17 @@
 #custom-launcher,
 #custom-power-menu,
 #custom-bar-toggle,
-#custom-weather {
+#custom-weather,
+#custom-swaync,
+#bluetooth,
+#custom-separator {
   background: rgba(30, 30, 46, 0.7);
-  border: 2px solid rgba(137, 180, 250, 0.4);
+  border: 1px solid rgba(138, 173, 244, 0.4);
   border-radius: 12px;
   padding: 0 16px;
   margin: 4px 4px;
   font-weight: 900;
-  color: #89b4fa !important; /* Unified High-visibility Blue */
+  color: #8aadf4 !important; /* Unified Blue Icon color */
 }
 
 /* Force same color for nested elements */
@@ -59,25 +62,40 @@ label,
 #pulseaudio, 
 #network, 
 #clock, 
-#tray {
-  color: #89b4fa !important;
+#tray,
+#custom-swaync,
+#bluetooth {
+  color: #8aadf4 !important;
 }
 
 #custom-launcher {
   font-size: 20px;
-  color: #cba6f7 !important; /* Mauve for Launcher to distinguish */
 }
 
 #custom-power-menu {
   font-size: 20px;
-  color: #f38ba8 !important; /* Red for Power to distinguish */
+}
+
+#custom-bar-toggle {
+  font-size: 18px;
 }
 
 #battery.critical:not(.charging) {
   background-color: #f38ba8;
-  color: #ffffff !important; /* White on red background for critical */
+  color: #ffffff !important;
 }
 
 #tray > .passive {
   -gtk-icon-effect: none;
+}
+
+/* Fix for icons that might be inside a group or span */
+#waybar span {
+    color: #8aadf4 !important;
+}
+
+#custom-separator {
+    background: transparent;
+    border: none;
+    color: rgba(138, 173, 244, 0.4) !important;
 }
