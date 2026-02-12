@@ -35,6 +35,7 @@ link_file "$DOTFILES_DIR/swayosd" "$CONFIG_DIR/swayosd"
 link_file "$DOTFILES_DIR/fish/config.fish" "$CONFIG_DIR/fish/config.fish"
 link_file "$DOTFILES_DIR/alacritty/alacritty.toml" "$CONFIG_DIR/alacritty/alacritty.toml"
 link_file "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
+link_file "$DOTFILES_DIR/dashboard" "$HOME/.dashboard"
 link_file "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 link_file "$DOTFILES_DIR/bin/micctl" "$HOME/.local/bin/micctl"
 

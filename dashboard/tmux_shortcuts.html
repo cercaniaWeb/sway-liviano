@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tmux Cheatsheet - Shortcuts</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@latest/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        @font-face {
+            font-family: 'Hack Nerd Font';
+            src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@latest/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .nf-icon {
+            font-family: 'Hack Nerd Font', monospace;
+            font-size: 1.2em;
+        }
+
+        :root {
+            --base: #1e1e2e;
+            --mantle: #181825;
+            --crust: #11111b;
+            --text: #cdd6f4;
+            --subtext: #a6adc8;
+            --mauve: #cba6f7;
+            --blue: #89b4fa;
+            --lavender: #b4befe;
+            --teal: #94e2d5;
+            --green: #a6da95;
+            --yellow: #f9e2af;
+            --peach: #fab387;
+            --maroon: #eba0ac;
+            --red: #f38ba8;
+            --surface: #313244;
+            --overlay: #45475a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--base);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--mantle);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--surface);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        p.subtitle {
+            color: var(--subtext);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .section {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--overlay);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            border-color: var(--teal);
+            background: var(--surface);
+            cursor: pointer;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--lavender);
+        }
+
+        .shortcut-list {
+            list-style: none;
+        }
+
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--overlay);
+        }
+
+        .shortcut-item:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: var(--subtext);
+            font-size: 0.95rem;
+        }
+
+        .keys {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--crust);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--teal);
+            border: 1px solid var(--overlay);
+        }
+
+        .prefix {
+            color: var(--mauve);
+            font-weight: 600;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--overlay);
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--surface);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 10px;
+            border: 1px solid var(--overlay);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-back:hover {
+            background: var(--overlay);
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        /* Micro-animations */
+        .keys {
+            transition: all 0.2s ease;
+        }
+
+        .shortcut-item:hover .keys {
+            color: var(--mauve);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="nf-icon"></span> Tmux Master Guide</h1>
+            <p class="subtitle">Complete cheat sheet for your session management</p>
+        </header>
+
+        <div class="grid">
+            <!-- Sessions -->
+            <div class="section">
+                <h2><span class="nf-icon">󰒋</span> Sessions</h2>
+                <ul class="shortcut-list">
+                    <li class="shortcut-item"><span class="label">New Session</span><span class="keys">tmux</span></li>
+                    <li class="shortcut-item"><span class="label">New Named Session</span><span class="keys">tmux new -s
+                            [name]</span></li>
+                    <li class="shortcut-item"><span class="label">Attach to Session</span><span class="keys">tmux a -t
+                            [name]</span></li>
+                    <li class="shortcut-item"><span class="label">List Sessions</span><span class="keys"><span
+                                class="prefix">C-b</span> s</span></li>
+                    <li class="shortcut-item"><span class="label">Detach Session</span><span class="keys"><span
+                                class="prefix">C-b</span> d</span></li>
+                    <li class="shortcut-item"><span class="label">Rename Session</span><span class="keys"><span
+                                class="prefix">C-b</span> $</span></li>
+                </ul>
+            </div>
+
+            <!-- Windows -->
+            <div class="section">
+                <h2><span class="nf-icon">󰖯</span> Windows</h2>
+                <ul class="shortcut-list">
+                    <li class="shortcut-item"><span class="label">Create Window</span><span class="keys"><span
+                                class="prefix">C-b</span> c</span></li>
+                    <li class="shortcut-item"><span class="label">Next Window</span><span class="keys"><span
+                                class="prefix">C-b</span> n</span></li>
+                    <li class="shortcut-item"><span class="label">Previous Window</span><span class="keys"><span
+                                class="prefix">C-b</span> p</span></li>
+                    <li class="shortcut-item"><span class="label">Select by Number</span><span class="keys"><span
+                                class="prefix">C-b</span> [0-9]</span></li>
+                    <li class="shortcut-item"><span class="label">Rename Window</span><span class="keys"><span
+                                class="prefix">C-b</span> ,</span></li>
+                    <li class="shortcut-item"><span class="label">Kill Window</span><span class="keys"><span
+                                class="prefix">C-b</span> &</span></li>
+                </ul>
+            </div>
+
+            <!-- Panes -->
+            <div class="section">
+                <h2><span class="nf-icon">󰖲</span> Panes</h2>
+                <ul class="shortcut-list">
+                    <li class="shortcut-item"><span class="label">Split Horizontal</span><span class="keys"><span
+                                class="prefix">C-b</span> |</span></li>
+                    <li class="shortcut-item"><span class="label">Split Vertical</span><span class="keys"><span
+                                class="prefix">C-b</span> -</span></li>
+                    <li class="shortcut-item"><span class="label">Navigate Panes</span><span class="keys">Alt + H J K
+                            L</span></li>
+                    <li class="shortcut-item"><span class="label">Resize Panes</span><span class="keys"><span
+                                class="prefix">C-b</span> H J K L</span></li>
+                    <li class="shortcut-item"><span class="label">Zoom Toggle</span><span class="keys"><span
+                                class="prefix">C-b</span> z</span></li>
+                    <li class="shortcut-item"><span class="label">Close Pane</span><span class="keys"><span
+                                class="prefix">C-b</span> x</span></li>
+                </ul>
+            </div>
+
+            <!-- Copy Mode -->
+            <div class="section">
+                <h2><span class="nf-icon">󰆏</span> Copy Mode</h2>
+                <ul class="shortcut-list">
+                    <li class="shortcut-item"><span class="label">Enter Copy Mode</span><span class="keys"><span
+                                class="prefix">C-b</span> [</span></li>
+                    <li class="shortcut-item"><span class="label">Begin Selection</span><span class="keys">Space /
+                            v</span></li>
+                    <li class="shortcut-item"><span class="label">Copy Selection</span><span class="keys">Enter /
+                            y</span></li>
+                    <li class="shortcut-item"><span class="label">Paste Buffer</span><span class="keys"><span
+                                class="prefix">C-b</span> ]</span></li>
+                    <li class="shortcut-item"><span class="label">Search Up</span><span class="keys">/</span></li>
+                    <li class="shortcut-item"><span class="label">Quit Copy Mode</span><span class="keys">q</span></li>
+                </ul>
+            </div>
+
+            <!-- Navigation & Layouts -->
+            <div class="section">
+                <h2><span class="nf-icon">󰹴</span> Navigation</h2>
+                <ul class="shortcut-list">
+                    <li class="shortcut-item"><span class="label">List Shortcuts</span><span class="keys"><span
+                                class="prefix">C-b</span> ?</span></li>
+                    <li class="shortcut-item"><span class="label">Command Prompt</span><span class="keys"><span
+                                class="prefix">C-b</span> :</span></li>
+                    <li class="shortcut-item"><span class="label">Next Layout</span><span class="keys"><span
+                                class="prefix">C-b</span> Space</span></li>
+                    <li class="shortcut-item"><span class="label">Show Clock</span><span class="keys"><span
+                                class="prefix">C-b</span> t</span></li>
+                    <li class="shortcut-item"><span class="label">Reload Config</span><span class="keys"><span
+                                class="prefix">C-b</span> r</span></li>
+                </ul>
+            </div>
+
+            <!-- TPM (Plugins) -->
+            <div class="section">
+                <h2><span class="nf-icon">󱧕</span> Plugins (TPM)</h2>
+                <ul class="shortcut-list">
+                    <li class="shortcut-item"><span class="label">Install Plugins</span><span class="keys"><span
+                                class="prefix">C-b</span> I</span></li>
+                    <li class="shortcut-item"><span class="label">Update Plugins</span><span class="keys"><span
+                                class="prefix">C-b</span> U</span></li>
+                    <li class="shortcut-item"><span class="label">Clean Plugins</span><span class="keys"><span
+                                class="prefix">C-b</span> alt-u</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="index.html" class="btn-back">󰌍 Retroceder al Dashboard</a>
+            <span>Diseñado con Catppuccin Mocha • Prefijo configurado: Control + B</span>
+        </div>
+    </div>
+</body>
+
+</html>

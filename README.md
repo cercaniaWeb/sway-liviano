@@ -23,6 +23,9 @@
 ### 🚀 Full Environment (Launcher + Control Center)
 ![Full Setup](assets/screenshots/full_setup.png)
 
+### 📊 Interactive Shortcut Dashboard
+![Dashboard](assets/screenshots/dashboard.png)
+
 ---
 
 ## ✨ Features
