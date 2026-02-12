@@ -1,21 +1,22 @@
-/* High Contrast Theme - Premium Glass Edition */
+/* High Contrast Theme - Mint Glass Edition */
+@import url("theme.css");
+
 * {
   font-family: "JetBrainsMono Nerd Font", "Iosevka Nerd Font", Lexend;
   font-size: 14px;
   min-height: 0;
 }
-@import url("theme.css");
 
 #workspaces {
-  background: rgba(45, 47, 60, 0.45); /* Glassy background */
+  background: rgba(255, 255, 255, 0.02);
   margin: 4px 6px;
   padding: 0 4px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 #workspaces button {
-  color: #8aadf4;
+  color: #a6e3a1; /* Mint/Green from image */
   padding: 0 8px;
   font-weight: 900;
 }
@@ -41,55 +42,49 @@
 #custom-weather,
 #custom-swaync,
 #bluetooth {
-  background: rgba(255, 255, 255, 0.1); /* Frosted glass look */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Defined glass edge */
+  background: rgba(255, 255, 255, 0.03); /* Ultra-low opacity glass */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle edge */
   border-radius: 12px;
   padding: 0 16px;
   margin: 4px 4px;
   font-weight: 900;
-  color: #8aadf4;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  color: #a6e3a1; /* Mint/Green from image */
 }
 
-/* Hover effect */
-#window:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover,
-#pulseaudio:hover,
-#network:hover,
-#clock:hover,
-#battery:hover,
-#custom-launcher:hover,
-#custom-power-menu:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-#custom-separator {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  color: rgba(205, 214, 244, 0.2);
-}
-
-label, #battery, #backlight, #pulseaudio, #network, #clock, #tray, #custom-swaync, #bluetooth {
-  color: #8aadf4;
+/* Force Mint color for nested text/icons */
+label, 
+#battery, 
+#backlight, 
+#pulseaudio, 
+#network, 
+#clock, 
+#tray,
+#custom-swaync,
+#bluetooth {
+  color: #a6e3a1 !important;
 }
 
 #custom-launcher, #custom-power-menu {
   font-size: 20px;
 }
 
+/* Preserve traffic light logic (SEMAFORO) */
 #battery.critical:not(.charging) {
   background-color: #f38ba8;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
-#tray > .passive {
-  -gtk-icon-effect: none;
+#temperature.critical {
+  color: #f38ba8 !important;
 }
 
 #waybar span {
-  color: #8aadf4;
+  color: #a6e3a1;
+}
+
+#custom-separator {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.1);
 }
