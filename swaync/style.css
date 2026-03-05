@@ -1,41 +1,47 @@
-@define-color base #1e1e2e;
+@define-color base rgba(15, 17, 26, 0.95);
+@define-color surface rgba(255, 255, 255, 0.05);
+@define-color accent #7aa2f7;
+@define-color text #a9b1d6;
+@define-color red #f7768e;
+@define-color green #9ece6a;
+@define-color yellow #e0af68;
 @define-color mantle #181825;
 @define-color crust #11111b;
-@define-color text #cdd6f4;
 @define-color subtext #a6adc8;
-@define-color surface #313244;
 @define-color overlay #6c7086;
 @define-color mauve #cba6f7;
 @define-color sapphire #74c7ec;
-@define-color red #f38ba8;
-@define-color green #a6da95;
 
 * {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "Inter", "JetBrainsMono Nerd Font";
   font-weight: 500;
 }
 
 .control-center {
-  background: alpha(@base, 0.85);
-  border-radius: 24px;
+  background: @base;
+  backdrop-filter: blur(25px);
   border: 1px solid @surface;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  margin: 10px;
-  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  margin: 50px 20px 50px 0;
+  padding: 0;
 }
 
 /* Titles and Labels */
 .widget-title {
   color: @text;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0.8;
   margin: 10px;
 }
 
 .widget-label {
-  color: @mauve;
-  font-size: 1rem;
+  color: @accent;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   margin: 10px 10px 0 10px;
-  font-weight: bold;
 }
 
 /* Monitoring Pills */
@@ -53,29 +59,29 @@
 
 /* Quick Toggles Grid */
 .widget-buttons-grid {
-  padding: 15px;
-  margin: 10px;
-  background: @mantle;
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid @surface;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .widget-buttons-grid>button {
-  background: @surface;
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
   margin: 6px;
   min-width: 65px;
   min-height: 50px;
   color: @text;
   font-size: 1.4rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s;
   border: 1px solid transparent;
 }
 
 .widget-buttons-grid>button:hover {
-  background: alpha(@mauve, 0.2);
-  color: @mauve;
-  border: 1px solid @mauve;
+  background: rgba(122, 162, 247, 0.1);
+  border-color: @accent;
+  color: @accent;
   box-shadow: 0 0 10px alpha(@mauve, 0.3);
 }
 
@@ -115,13 +121,13 @@
 
 trough {
   min-height: 12px;
-  background: @surface;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
 }
 
 highlight {
-  background: linear-gradient(to right, @mauve, @sapphire);
-  border-radius: 10px;
+  background: @accent;
+  border-radius: 4px;
 }
 
 /* Notifications */
@@ -130,21 +136,22 @@ highlight {
 }
 
 .notification-background {
-  background: @mantle;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
   padding: 20px;
   border: 1px solid @surface;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .summary {
+  color: @accent;
   font-weight: bold;
   font-size: 1.15rem;
-  color: @mauve;
 }
 
 .body {
   color: @text;
+  opacity: 0.8;
   font-size: 1rem;
   line-height: 1.4;
 }

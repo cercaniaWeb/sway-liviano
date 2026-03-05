@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Logging para depuración
+exec > /tmp/sway-run.log 2>&1
+echo "Iniciando sway-run a $(date)"
+echo "User: $(id)"
+echo "PATH: $PATH"
+echo "XDG_RUNTIME_DIR: $XDG_RUNTIME_DIR"
+
+# Configuración de variables de entorno para Wayland y Sway
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+
+# Exportar variables para GTK y Qt
+export MOZ_ENABLE_WAYLAND=1
+export _JAVA_AWT_WM_NONREPARENTING=1
+export QT_QPA_PLATFORM=wayland
+
+# Cargar el perfil del usuario si existe
+if [ -f "$HOME/.profile" ]; then
+    . "$HOME/.profile"
+fi
+
+# Ejecutar Sway (usando ruta absoluta para mayor seguridad)
+echo "Lanzando sway..."
+exec /usr/bin/sway "$@"

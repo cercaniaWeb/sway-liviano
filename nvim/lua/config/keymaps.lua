@@ -15,6 +15,18 @@ wk.add({
   
   { "<leader>l", group = "lsp" },
   { "<leader>lf", function() require("conform").format({ lsp_fallback = true }) end, desc = "Format File" },
+  { "<leader>lr", vim.lsp.buf.rename, desc = "Rename" },
+  { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action" },
+  { "<leader>ld", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition" },
+  
+  { "<leader>x", group = "trouble" },
+  { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
+  { "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols" },
+  { "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "Location List" },
+  
+  { "<leader>s", group = "sessions" },
+  { "<leader>ss", "<cmd>SessionRestore<cr>", desc = "Restore Session" },
+  { "<leader>sa", "<cmd>SessionSave<cr>", desc = "Save Session" },
   
   { "<leader>w", proxy = "<c-w>", group = "windows" },
   

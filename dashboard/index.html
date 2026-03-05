@@ -4,371 +4,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Dashboard - Shortcuts</title>
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@latest/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf">
+    <title>Sway Liviano Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
-        @font-face {
-            font-family: 'Hack Nerd Font';
-            src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@latest/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        .nf-icon {
-            font-family: 'Hack Nerd Font', monospace;
-            font-size: 1.2em;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
 
         :root {
-            --base: #1e1e2e;
-            --mantle: #181825;
-            --crust: #11111b;
-            --text: #cdd6f4;
-            --subtext: #a6adc8;
-            --mauve: #cba6f7;
-            --blue: #89b4fa;
-            --lavender: #b4befe;
-            --teal: #94e2d5;
-            --surface: #313244;
-            --overlay: #45475a;
+            --bg-dark: #0b0e14;
+            --panel-bg: rgba(15, 17, 26, 0.95);
+            --accent: #7aa2f7;
+            --border: rgba(255, 255, 255, 0.05);
+            --glass-blur: blur(25px);
         }
 
-        * {
+        html,
+        body {
+            background: #0b0e14 !important;
+            font-family: 'Inter', sans-serif;
+            color: #a9b1d6;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        body {
-            background-color: var(--base);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+        .glass {
+            background: var(--panel-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border);
+            height: 100%;
+        }
+
+        .tab-content {
+            display: none;
+            height: 100%;
+        }
+
+        .tab-content.active {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
+            flex-direction: column;
         }
 
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            background: var(--mantle);
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--surface);
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--mauve);
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-
-        p.subtitle {
-            color: var(--subtext);
-            font-size: 1.1rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .section {
-            background: var(--surface);
-            padding: 1.5rem;
-            border-radius: 16px;
-            border: 1px solid var(--overlay);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            border-color: var(--blue);
-            background: var(--surface);
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--blue);
-        }
-
-        .shortcut-list {
-            list-style: none;
-        }
-
-        .shortcut-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--overlay);
-        }
-
-        .shortcut-item:last-child {
-            border-bottom: none;
-        }
-
-        .label {
-            color: var(--subtext);
-            font-size: 0.95rem;
-        }
-
-        .keys {
+        .mono {
             font-family: 'JetBrains Mono', monospace;
-            background: var(--crust);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: var(--teal);
-            border: 1px solid var(--overlay);
-        }
-
-        .footer {
-            margin-top: 3rem;
-            text-align: center;
-            color: var(--overlay);
-            font-size: 0.85rem;
-        }
-
-        /* Micro-animations */
-        .keys {
-            transition: color 0.2s ease;
-        }
-
-        .shortcut-item:hover .keys {
-            color: var(--mauve);
-        }
-
-        /* Tooltip style */
-        .tooltip {
-            position: fixed;
-            background: var(--overlay);
-            color: var(--text);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            z-index: 1000;
-            pointer-events: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--mauve);
-            transform: translate(-50%, -100%);
-            margin-top: -10px;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .tooltip.show {
-            opacity: 1;
-            transform: translate(-50%, -120%);
-        }
-
-        .shortcut-item {
-            cursor: help;
         }
     </style>
 </head>
 
-<body>
-    <div class="container">
-        <header>
-            <h1>System Dashboard</h1>
-            <p class="subtitle">Quick reference for your custom environment</p>
-        </header>
+<body class="flex items-stretch justify-start">
 
-        <div class="grid">
-            <!-- Sway Shortcuts (Click to expand) -->
-            <div class="section" onclick="window.location.href='system_shortcuts.html'">
-                <h2><span class="nf-icon">󰍹</span> Sway WM <span
-                        style="font-size: 0.7em; color: var(--mauve); border: 1px solid var(--mauve); padding: 2px 6px; border-radius: 4px; margin-left: auto;">Ver
-                        todos</span></h2>
-                <ul class="shortcut-list">
-                    <li class="shortcut-item" data-desc="Cierra la ventana enfocada inmediatamente"><span
-                            class="label">Kill Window</span><span class="keys">Mod4 + Q</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Abre el lanzador de aplicaciones Rofi"><span class="label">App
-                            Launcher</span><span class="keys">Mod4 + R</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Alterna entre modo flotante y mosaico"><span
-                            class="label">Floating Toggle</span><span class="keys">Mod4 +
-                            S</span></li>
-                    <li class="shortcut-item" data-desc="Expande la ventana a pantalla completa"><span
-                            class="label">Fullscreen</span><span class="keys">Mod4 + F</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Abre el panel de notificaciones y controles"><span
-                            class="label">Swaync Panel</span><span class="keys">Mod4 + T</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Bloquea la sesión de usuario"><span class="label">Lock
-                            Screen</span><span class="keys">Mod4 + Esc</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Invoca al asistente de IA Antigravity"><span
-                            class="label">Antigravity AI</span><span class="keys">Mod4 +
-                            G</span></li>
-                </ul>
-            </div>
-
-            <!-- Apps -->
-            <div class="section">
-                <h2><span class="nf-icon">󰀻</span> Applications</h2>
-                <ul class="shortcut-list">
-                    <li class="shortcut-item" data-desc="Abre la terminal Alacritty"><span
-                            class="label">Terminal</span><span class="keys">Mod4 + Enter</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Abre el gestor de archivos Yazi"><span class="label">File
-                            Manager</span><span class="keys">Mod4 + E</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Lanza el navegador Thorium"><span
-                            class="label">Browser</span><span class="keys">Mod4 + B</span></li>
-                    <li class="shortcut-item" data-desc="Abre el cliente de Discord"
-                        onclick="event.stopPropagation(); window.open('https://discord.com/app', '_blank')"><span
-                            class="label">Discord</span><span class="keys">Mod4 + D</span></li>
-                    <li class="shortcut-item" data-desc="Abre YouTube Music"
-                        onclick="event.stopPropagation(); window.open('https://music.youtube.com', '_blank')"><span
-                            class="label">Music</span><span class="keys">Mod4 + M</span></li>
-                    <li class="shortcut-item" data-desc="Abre Obsidian"
-                        onclick="event.stopPropagation(); window.open('https://obsidian.md', '_blank')"><span
-                            class="label">Obsidian</span><span class="keys">Mod4 + O</span></li>
-                    <li class="shortcut-item" data-desc="Inicia el editor Windsurf con IA"><span class="label">Windsurf
-                            AI</span><span class="keys">Alt + W</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Accede a la documentación local"><span class="label">Skills
-                            Doc</span><span class="keys">Alt + S</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Inicia el entorno de desarrollo AI (Script)"><span class="label">Dev
-                            Environment</span><span class="keys">Mod4 + Shift + D</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Tmux (Click to expand) -->
-            <div class="section" onclick="window.location.href='tmux_shortcuts.html'">
-                <h2><span class="nf-icon"></span> Tmux <span
-                        style="font-size: 0.7em; color: var(--mauve); border: 1px solid var(--mauve); padding: 2px 6px; border-radius: 4px; margin-left: auto;">Ver
-                        todos</span></h2>
-                <ul class="shortcut-list">
-                    <li class="shortcut-item" data-desc="Tecla maestra para comandos de Tmux"><span
-                            class="label">Prefix</span><span class="keys">Ctrl + B</span></li>
-                    <li class="shortcut-item" data-desc="Divide el panel horizontal o verticalmente"><span
-                            class="label">Split H / V</span><span class="keys">Prefix + | /
-                            -</span></li>
-                    <li class="shortcut-item" data-desc="Navega entre paneles con Alt+HJKL"><span class="label">Navigate
-                            Panes</span><span class="keys">Alt + H J K
-                            L</span></li>
-                    <li class="shortcut-item" data-desc="Cierra el panel actual de tmux"><span class="label">Close
-                            Pane</span><span class="keys">Prefix + X</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Recarga la configuración de .tmux.conf"><span
-                            class="label">Reload Config</span><span class="keys">Prefix +
-                            R</span></li>
-                </ul>
-            </div>
-
-            <!-- System Control (Click to expand) -->
-            <div class="section" onclick="window.location.href='system_shortcuts.html'">
-                <h2><span class="nf-icon">󰒓</span> System Control <span
-                        style="font-size: 0.7em; color: var(--mauve); border: 1px solid var(--mauve); padding: 2px 6px; border-radius: 4px; margin-left: auto;">Ver
-                        todos</span></h2>
-                <ul class="shortcut-list">
-                    <li class="shortcut-item" data-desc="Mueve la ventana con flechas Vim"><span class="label">Move
-                            Container</span><span class="keys">Mod4 + Shift +
-                            H J K L</span></li>
-                    <li class="shortcut-item" data-desc="Envía la ventana a otro espacio de trabajo"><span
-                            class="label">Move to Workspace</span><span class="keys">Mod4 + Ctrl
-                            + [0-9]</span></li>
-                    <li class="shortcut-item" data-desc="Define la dirección de la próxima ventana"><span
-                            class="label">Split H / V</span><span class="keys">Mod4 + P /
-                            Shift+P</span></li>
-                    <li class="shortcut-item" data-desc="Cambia entre modo mosaico y flotante"><span
-                            class="label">Floating Toggle</span><span class="keys">Mod4 +
-                            S</span></li>
-                    <li class="shortcut-item" data-desc="Recarga la configuración de Sway"><span class="label">Reload
-                            Config</span><span class="keys">Mod4 + Shift +
-                            R</span></li>
-                    <li class="shortcut-item" data-desc="Termina la sesión de Sway WM"><span class="label">Exit
-                            Sway</span><span class="keys">Mod4 + Shift +
-                            E</span></li>
-                </ul>
-            </div>
-
-            <!-- Modern CLI Tools (Click to expand) -->
-            <div class="section" onclick="window.location.href='system_shortcuts.html'">
-                <h2><span class="nf-icon">󰄛</span> Modern CLI <span
-                        style="font-size: 0.7em; color: var(--mauve); border: 1px solid var(--mauve); padding: 2px 6px; border-radius: 4px; margin-left: auto;">Ver
-                        todos</span></h2>
-                <ul class="shortcut-list">
-                    <li class="shortcut-item" data-desc="Listado de archivos moderno con iconos"><span class="label">eza
-                            (ls)</span><span class="keys">ls</span></li>
-                    <li class="shortcut-item" data-desc="Visualizador de archivos con colores"><span class="label">bat
-                            (cat)</span><span class="keys">bat [file]</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Interfaz gráfica de terminal para Git"><span
-                            class="label">lazygit</span><span class="keys">g / lazygit</span>
-                    </li>
-                    <li class="shortcut-item" data-desc="Monitor de sistema enriquecido"><span
-                            class="label">bottom</span><span class="keys">btm</span></li>
-                </ul>
-            </div>
+    <main class="w-full glass flex flex-col shadow-2xl">
+        <!-- TABS HEADER -->
+        <div class="flex h-14 border-b border-white/5">
+            <button onclick="setTab('ai')" id="tab-btn-ai"
+                class="flex-1 flex flex-col items-center justify-center space-y-1 text-[9px] font-bold tracking-tighter border-b-2 border-accent bg-white/5 transition">
+                <i class="fa-solid fa-brain text-xs"></i> <span>IA AI</span>
+            </button>
+            <button onclick="setTab('trans')" id="tab-btn-trans"
+                class="flex-1 flex flex-col items-center justify-center space-y-1 text-[9px] font-bold tracking-tighter border-b-2 border-transparent hover:bg-white/5 transition">
+                <i class="fa-solid fa-language text-xs"></i> <span>TRADUC</span>
+            </button>
         </div>
 
-        <div class="footer">
-            Designed for elegance and efficiency. Catppuccin Mocha.
+        <div class="flex-1 p-6 overflow-hidden">
+            <!-- AI Panel -->
+            <div id="panel-ai" class="tab-content active">
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-accent">Gemini Assistant</span>
+                </div>
+                <div id="ai-chat" class="flex-1 overflow-y-auto space-y-4 mb-6 pr-2 scrollbar-hide">
+                    <div class="text-gray-400 bg-white/5 p-4 rounded-xl border border-white/5 text-xs leading-relaxed">
+                        Sistema iniciado. Soy tu asistente inteligente integrado. ¿En qué puedo ayudarte?
+                    </div>
+                </div>
+                <div class="relative bg-black/40 border border-white/10 rounded-xl p-1">
+                    <textarea id="ai-query" rows="2" placeholder="Escribe tu consulta..."
+                        class="w-full bg-transparent border-none text-xs p-3 outline-none resize-none"></textarea>
+                    <button onclick="sendToAI()"
+                        class="absolute right-3 bottom-3 text-accent hover:scale-110 transition"><i
+                            class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <!-- Translator Panel -->
+            <div id="panel-trans" class="tab-content">
+                <div
+                    class="flex items-center justify-between mb-6 text-[10px] font-bold opacity-30 uppercase tracking-widest">
+                    <span>Español</span> <i class="fa-solid fa-arrow-right-long text-accent"></i> <span>Inglés</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-bold opacity-40 ml-1">ENTRADA</label>
+                        <textarea
+                            class="w-full h-32 bg-black/40 border border-white/10 rounded-xl p-4 text-xs outline-none focus:border-accent/50 resize-none"
+                            placeholder="Texto a traducir..."></textarea>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-bold opacity-40 ml-1">TRADUCCIÓN</label>
+                        <div
+                            class="w-full h-32 bg-white/5 border border-white/5 rounded-xl p-4 text-xs text-gray-500 italic">
+                            ...
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div id="tooltip" class="tooltip"></div>
+    </main>
 
     <script>
-        const tooltip = document.getElementById('tooltip');
-        const shortcuts = document.querySelectorAll('.shortcut-item');
-
-        shortcuts.forEach(item => {
-            item.addEventListener('click', (e) => {
-                const desc = item.getAttribute('data-desc');
-                if (!desc) return;
-
-                tooltip.innerText = desc;
-                tooltip.style.left = e.clientX + 'px';
-                tooltip.style.top = e.clientY + 'px';
-                tooltip.classList.add('show');
-
-                setTimeout(() => {
-                    tooltip.classList.remove('show');
-                }, 2000);
+        function setTab(tab) {
+            const tabs = ['ai', 'trans'];
+            tabs.forEach(t => {
+                const panel = document.getElementById(`panel-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (panel) panel.classList.remove('active');
+                if (btn) {
+                    btn.classList.remove('border-accent', 'bg-white/5');
+                    btn.classList.add('border-transparent');
+                }
             });
+
+            const activePanel = document.getElementById(`panel-${tab}`);
+            const activeBtn = document.getElementById(`tab-btn-${tab}`);
+            if (activePanel) activePanel.classList.add('active');
+            if (activeBtn) {
+                activeBtn.classList.add('border-accent', 'bg-white/5');
+                activeBtn.classList.remove('border-transparent');
+            }
+        }
+
+        async function sendToAI() {
+            const input = document.getElementById('ai-query');
+            const chat = document.getElementById('ai-chat');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const userDiv = document.createElement('div');
+            userDiv.className = "flex flex-col items-end space-y-1 mb-4";
+            userDiv.innerHTML = `<span class="text-[8px] font-bold opacity-40 uppercase">Tú</span><div class="bg-accent/10 text-white text-[11px] p-3 rounded-xl rounded-tr-none border border-accent/20">${text}</div>`;
+            chat.appendChild(userDiv);
+            input.value = "";
+
+            setTimeout(() => {
+                const aiDiv = document.createElement('div');
+                aiDiv.className = "flex flex-col items-start space-y-1 mb-4";
+                aiDiv.innerHTML = `<span class="text-[8px] font-bold opacity-40 uppercase text-accent">AI</span><div class="bg-white/5 text-gray-300 text-[11px] p-3 rounded-xl rounded-tl-none border border-white/10">Analizando... El núcleo del sistema responde correctamente.</div>`;
+                chat.appendChild(aiDiv);
+                chat.scrollTop = chat.scrollHeight;
+            }, 600);
+        }
+
+        document.getElementById('ai-query').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendToAI();
+            }
+        });
+
+        // Close on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                window.close();
+            }
         });
     </script>
 </body>

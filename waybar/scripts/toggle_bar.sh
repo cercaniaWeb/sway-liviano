@@ -1,7 +1,7 @@
 #!/bin/bash
-THEME_FILE="/home/lro/.config/waybar/theme.css"
-FULL_THEME="/home/lro/.config/waybar/themes/full.css"
-CAPSULE_THEME="/home/lro/.config/waybar/themes/capsules.css"
+THEME_FILE="/home/lrs/.config/waybar/theme.css"
+FULL_THEME="/home/lrs/.config/waybar/themes/full.css"
+CAPSULE_THEME="/home/lrs/.config/waybar/themes/capsules.css"
 
 if /usr/bin/diff "$THEME_FILE" "$FULL_THEME" >/dev/null; then
     /usr/bin/cp "$CAPSULE_THEME" "$THEME_FILE"

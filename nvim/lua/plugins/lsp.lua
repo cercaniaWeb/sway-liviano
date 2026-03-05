@@ -1,6 +1,10 @@
 -- lua/plugins/lsp.lua
 return {
-  { "neovim/nvim-lspconfig" },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   { "hrsh7th/nvim-cmp" },
@@ -11,25 +15,42 @@ return {
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "ts_ls", "eslint", "astro", "html", "cssls" }
+        ensure_installed = { "eslint", "astro", "html", "cssls", "tailwindcss" }
       })
 
-      local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local servers = { "ts_ls", "eslint", "astro", "html", "cssls" }
+      local servers = { "eslint", "astro", "html", "cssls", "tailwindcss" }
       for _, lsp in ipairs(servers) do
-        -- Check if vim.lsp.config exists (Neovim 0.11+)
         if vim.lsp.config then
           vim.lsp.config(lsp, {
+            install = {
+              auto_install = true,
+            },
             capabilities = capabilities,
           })
         else
-          lspconfig[lsp].setup({
+          require("lspconfig")[lsp].setup({
             capabilities = capabilities,
           })
         end
       end
+
+      -- Diagnostic UI Styling
+      vim.diagnostic.config({
+        virtual_text = { prefix = "●" },
+        update_in_insert = true,
+        underline = true,
+        severity_sort = true,
+        float = {
+          focused = false,
+          style = "minimal",
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+      })
     end,
   },
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to the Obsidian vault - User should adjust this if it's different
-VAULT_PATH="/home/lro/Documents/Obsidian Vault"
+VAULT_PATH="/home/lrs/Documents/Obsidian Vault"
 
 # Check if obsidian is installed
 if ! command -v obsidian &> /dev/null; then

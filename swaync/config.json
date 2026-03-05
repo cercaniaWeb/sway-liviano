@@ -27,6 +27,8 @@
         "title",
         "label#system_stats",
         "buttons-grid",
+        "label#mpris_text",
+        "mpris",
         "label#vol_text",
         "volume",
         "label#bl_text",
@@ -43,6 +45,10 @@
         "label#system_stats": {
             "text": "System Control Center",
             "style": "widget-label system-stats"
+        },
+        "label#mpris_text": {
+            "text": "󰓇 Spotify & Media",
+            "style": "widget-label"
         },
         "label#vol_text": {
             "text": "󰕾 Volume",
@@ -72,7 +78,7 @@
                 },
                 {
                     "label": "󰒓",
-                    "command": "/home/lro/.gemini/antigravity/scratch/dashboard/launch.sh system_shortcuts.html"
+                    "command": "/home/lrs/sway-liviano/dashboard/launch.sh system_shortcuts.html"
                 },
                 {
                     "label": "󰤄",

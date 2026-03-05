@@ -105,4 +105,30 @@ return {
     },
     ft = { "markdown", "Avante" },
   },
+
+  -- Indent guides
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+  },
+
+  -- Breadcrumbs
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
+  },
+
+  -- Highlight TODOs
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
 }

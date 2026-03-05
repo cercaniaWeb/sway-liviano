@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sway Liviano - Agent Skills</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+        :root {
+            --base: #1e1e2e;
+            --mantle: #181825;
+            --crust: #11111b;
+            --text: #cdd6f4;
+            --subtext: #a6adc8;
+            --mauve: #cba6f7;
+            --blue: #89b4fa;
+            --lavender: #b4befe;
+            --teal: #94e2d5;
+            --surface: #313244;
+            --overlay: #45475a;
+            --yellow: #f9e2af;
+            --red: #f38ba8;
+        }
+        body { background-color: var(--base) !important; color: var(--text); font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+        .container { width: 100%; height: 100%; background: var(--mantle); display: flex; flex-direction: column; overflow: hidden; }
+        .tab-btn.active { color: var(--mauve); border-bottom: 2px solid var(--mauve); }
+        .tab-content { display: none; overflow-y: auto; height: 100%; padding: 2rem; }
+        .tab-content.active { display: block; }
+        .shortcut-card { background: var(--surface); border: 1px solid var(--overlay); transition: all 0.2s; border-radius: 12px; padding: 1rem; }
+        .shortcut-card:hover { border-color: var(--mauve); transform: translateY(-2px); }
+        kbd { font-family: 'JetBrains Mono', monospace; background: var(--crust); color: var(--teal); padding: 0.2rem 0.5rem; border-radius: 6rem; font-size: 0.8rem; }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--mantle); }
+        ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--overlay); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="p-6 border-b border-white/5 flex flex-col gap-4 bg-mantle z-10">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold tracking-tight flex items-center gap-3">
+                    <span class="text-mauve"><i class="fa-solid fa-robot"></i></span> Agent Skills
+                </h1>
+                <div class="flex gap-2 bg-crust/50 p-1 rounded-lg">
+                </div>
+            </div>
+            <!-- Category Tabs -->
+            <div class="flex gap-4 overflow-x-auto pb-2 border-b border-white/5">
+
+                <button onclick="setTab('creative-design')" id="btn-creative-design" 
+                    class="tab-btn active px-4 py-2 text-sm font-semibold flex items-center gap-2 whitespace-nowrap hover:text-white transition-colors">
+                    <i class="fa-solid fa-paintbrush"></i> Creative & Design
+                </button>
+        
+                <button onclick="setTab('development-engineering')" id="btn-development-engineering" 
+                    class="tab-btn  px-4 py-2 text-sm font-semibold flex items-center gap-2 whitespace-nowrap hover:text-white transition-colors">
+                    <i class="fa-solid fa-code"></i> Development & Engineering
+                </button>
+        
+                <button onclick="setTab('documentation-office')" id="btn-documentation-office" 
+                    class="tab-btn  px-4 py-2 text-sm font-semibold flex items-center gap-2 whitespace-nowrap hover:text-white transition-colors">
+                    <i class="fa-solid fa-file-lines"></i> Documentation & Office
+                </button>
+        
+                <button onclick="setTab('planning-workflow')" id="btn-planning-workflow" 
+                    class="tab-btn  px-4 py-2 text-sm font-semibold flex items-center gap-2 whitespace-nowrap hover:text-white transition-colors">
+                    <i class="fa-solid fa-list-check"></i> Planning & Workflow
+                </button>
+        
+                <button onclick="setTab('system-extension')" id="btn-system-extension" 
+                    class="tab-btn  px-4 py-2 text-sm font-semibold flex items-center gap-2 whitespace-nowrap hover:text-white transition-colors">
+                    <i class="fa-solid fa-microchip"></i> System Extension
+                </button>
+                    </div>
+        </header>
+        
+        <div class="flex-1 overflow-hidden relative">
+    
+            <div id="tab-creative-design" class="tab-content active">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@algorithmic-art Create algorithmic art with p5.js', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-mauve">@algorithmic-art</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-mauve transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Create algorithmic art with p5.js</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@algorithmic-art Create algorithmic art with p5.js</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@canvas-design Design posters and artwork (PNG/PDF output)', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-mauve">@canvas-design</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-mauve transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Design posters and artwork (PNG/PDF output)</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@canvas-design Design posters and artwork (PNG/PDF output)</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@frontend-design Build production-grade frontend interfaces', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-mauve">@frontend-design</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-mauve transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Build production-grade frontend interfaces</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@frontend-design Build production-grade frontend interfaces</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@ui-ux-pro-max Professional UI/UX design with color, fonts, layouts', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-mauve">@ui-ux-pro-max</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-mauve transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Professional UI/UX design with color, fonts, layouts</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@ui-ux-pro-max Professional UI/UX design with color, fonts, layouts</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@web-artifacts-builder Build modern web apps (React, Tailwind, Shadcn/ui)', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-mauve">@web-artifacts-builder</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-mauve transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Build modern web apps (React, Tailwind, Shadcn/ui)</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@web-artifacts-builder Build modern web apps (React, Tailwind, Shadcn/ui)</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@theme-factory Generate themes for documents and presentations', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-mauve">@theme-factory</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-mauve transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Generate themes for documents and presentations</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@theme-factory Generate themes for documents and presentations</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@brand-guidelines Apply Anthropic brand design standards', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-mauve">@brand-guidelines</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-mauve transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Apply Anthropic brand design standards</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@brand-guidelines Apply Anthropic brand design standards</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@slack-gif-creator Create high-quality GIFs for Slack', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-mauve">@slack-gif-creator</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-mauve transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Create high-quality GIFs for Slack</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@slack-gif-creator Create high-quality GIFs for Slack</span>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        
+            <div id="tab-development-engineering" class="tab-content ">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@test-driven-development Write tests before implementation (TDD)', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-blue">@test-driven-development</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-blue transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Write tests before implementation (TDD)</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@test-driven-development Write tests before implementation (TDD)</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@systematic-debugging Debug systematically, not randomly', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-blue">@systematic-debugging</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-blue transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Debug systematically, not randomly</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@systematic-debugging Debug systematically, not randomly</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@webapp-testing Test web apps with Playwright', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-blue">@webapp-testing</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-blue transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Test web apps with Playwright</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@webapp-testing Test web apps with Playwright</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@receiving-code-review Handle code review feedback properly', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-blue">@receiving-code-review</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-blue transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Handle code review feedback properly</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@receiving-code-review Handle code review feedback properly</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@requesting-code-review Request code reviews before merging', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-blue">@requesting-code-review</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-blue transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Request code reviews before merging</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@requesting-code-review Request code reviews before merging</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@finishing-a-development-branch Complete dev branches (merge, PR, cleanup)', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-blue">@finishing-a-development-branch</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-blue transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Complete dev branches (merge, PR, cleanup)</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@finishing-a-development-branch Complete dev branches (merge, PR, cleanup)</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@subagent-driven-development Coordinate multiple AI agents for parallel tasks', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-blue">@subagent-driven-development</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-blue transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Coordinate multiple AI agents for parallel tasks</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@subagent-driven-development Coordinate multiple AI agents for parallel tasks</span>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        
+            <div id="tab-documentation-office" class="tab-content ">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@doc-coauthoring Collaborate on structured documents', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-teal">@doc-coauthoring</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-teal transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Collaborate on structured documents</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@doc-coauthoring Collaborate on structured documents</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@docx Create, edit, and analyze Word documents', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-teal">@docx</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-teal transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Create, edit, and analyze Word documents</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@docx Create, edit, and analyze Word documents</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@xlsx Work with Excel spreadsheets (formulas, charts)', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-teal">@xlsx</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-teal transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Work with Excel spreadsheets (formulas, charts)</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@xlsx Work with Excel spreadsheets (formulas, charts)</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@pptx Create and modify PowerPoint presentations', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-teal">@pptx</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-teal transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Create and modify PowerPoint presentations</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@pptx Create and modify PowerPoint presentations</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@pdf Handle PDFs (extract text, merge, split, fill forms)', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-teal">@pdf</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-teal transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Handle PDFs (extract text, merge, split, fill forms)</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@pdf Handle PDFs (extract text, merge, split, fill forms)</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@internal-comms Draft internal communications (reports, announcements)', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-teal">@internal-comms</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-teal transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Draft internal communications (reports, announcements)</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@internal-comms Draft internal communications (reports, announcements)</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@notebooklm Query Google NotebookLM notebooks', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-teal">@notebooklm</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-teal transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Query Google NotebookLM notebooks</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@notebooklm Query Google NotebookLM notebooks</span>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        
+            <div id="tab-planning-workflow" class="tab-content ">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@brainstorming Brainstorm and design before coding', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-yellow">@brainstorming</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-yellow transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Brainstorm and design before coding</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@brainstorming Brainstorm and design before coding</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@writing-plans Write detailed implementation plans', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-yellow">@writing-plans</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-yellow transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Write detailed implementation plans</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@writing-plans Write detailed implementation plans</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@planning-with-files File-based planning system (Manus-style)', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-yellow">@planning-with-files</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-yellow transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">File-based planning system (Manus-style)</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@planning-with-files File-based planning system (Manus-style)</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@executing-plans Execute plans with checkpoints and reviews', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-yellow">@executing-plans</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-yellow transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Execute plans with checkpoints and reviews</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@executing-plans Execute plans with checkpoints and reviews</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@using-git-worktrees Create isolated Git worktrees for parallel work', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-yellow">@using-git-worktrees</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-yellow transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Create isolated Git worktrees for parallel work</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@using-git-worktrees Create isolated Git worktrees for parallel work</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@verification-before-completion Verify work before claiming completion', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-yellow">@verification-before-completion</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-yellow transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Verify work before claiming completion</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@verification-before-completion Verify work before claiming completion</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@using-superpowers Discover and use advanced skills', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-yellow">@using-superpowers</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-yellow transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Discover and use advanced skills</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@using-superpowers Discover and use advanced skills</span>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        
+            <div id="tab-system-extension" class="tab-content ">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@mcp-builder Build MCP (Model Context Protocol) servers', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-red">@mcp-builder</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-red transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Build MCP (Model Context Protocol) servers</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@mcp-builder Build MCP (Model Context Protocol) servers</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@skill-creator Create new skills or update existing ones', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-red">@skill-creator</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-red transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Create new skills or update existing ones</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@skill-creator Create new skills or update existing ones</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@writing-skills Tools for writing and validating skill files', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-red">@writing-skills</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-red transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Tools for writing and validating skill files</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@writing-skills Tools for writing and validating skill files</span>
+                        </div>
+                    </div>
+            
+                    <div class="shortcut-card group cursor-pointer" onclick="copyPrompt('@dispatching-parallel-agents Distribute tasks to multiple agents', this)">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-red">@dispatching-parallel-agents</h3>
+                            <i class="fa-solid fa-copy text-surface group-hover:text-red transition-colors"></i>
+                        </div>
+                        <p class="text-sm text-subtext mb-3 leading-relaxed">Distribute tasks to multiple agents</p>
+                        <div class="bg-crust/50 rounded p-2 text-xs font-mono text-teal border border-white/5 group-hover:bg-surface transition-colors relative overflow-hidden">
+                            <span class="prompt-text">@dispatching-parallel-agents Distribute tasks to multiple agents</span>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        
+        </div>
+        
+        <!-- Toast Notification -->
+        <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-mauve text-base px-4 py-2 rounded-full shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none font-bold z-50">
+            <i class="fa-solid fa-check mr-2"></i> Copied to clipboard!
+        </div>
+        
+        <footer class="p-4 bg-crust border-t border-white/5 flex items-center justify-between text-xs opacity-50">
+             <span>Press <kbd>Esc</kbd> to close</span>
+             <span>Generated from agent_skills/README.md</span>
+        </footer>
+    </div>
+
+    <script>
+        function setTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active', 'text-mauve'));
+            
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            const btn = document.getElementById(`btn-${tabId}`);
+            if(btn) btn.classList.add('active', 'text-mauve');
+        }
+
+        async function copyPrompt(text, cardElement) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast();
+                
+                // Visual feedback on card
+                const originalBorder = cardElement.style.borderColor;
+                cardElement.style.borderColor = 'var(--teal)';
+                setTimeout(() => {
+                    cardElement.style.borderColor = originalBorder;
+                }, 200);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+        }
+        
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0');
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+            }, 2000);
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                window.close();
+            }
+        });
+    </script>
+</body>
+</html>
+    

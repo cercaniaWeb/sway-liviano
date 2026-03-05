@@ -5,23 +5,10 @@
     "margin-left": 8,
     "margin-right": 8,
     "spacing": 6,
-    "modules-left": [
-        "custom/launcher",
-        "sway/workspaces",
-        "sway/window"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "cpu",
-        "memory",
-        "pulseaudio",
-        "network",
-        "battery",
-        "tray",
-        "custom/power"
-    ],
+    "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "pulseaudio", "network", "battery", "tray", "custom/power"],
+
     "custom/launcher": {
         "format": "󰣇",
         "on-click": "rofi -show drun",
@@ -42,27 +29,12 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-icons": [
-            "󰕿",
-            "󰖀",
-            "󰕾"
-        ],
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
         "on-click": "pavucontrol"
     },
     "battery": {
         "format": "{icon} {capacity}%",
-        "format-icons": [
-            "󰂎",
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-        ]
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     }
 }
+eof

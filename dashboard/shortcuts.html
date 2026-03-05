@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sway Liviano - Master Shortcuts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        :root {
+            --base: #1e1e2e;
+            --mantle: #181825;
+            --crust: #11111b;
+            --text: #cdd6f4;
+            --subtext: #a6adc8;
+            --mauve: #cba6f7;
+            --blue: #89b4fa;
+            --lavender: #b4befe;
+            --teal: #94e2d5;
+            --surface: #313244;
+            --overlay: #45475a;
+        }
+
+        body {
+            background-color: var(--base) !important;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            background: var(--mantle);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--surface);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .tab-btn {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--mauve);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: var(--mauve);
+            border-radius: 2px;
+        }
+
+        .tab-content {
+            display: none;
+            overflow-y: auto;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .shortcut-card {
+            background: var(--surface);
+            border: 1px solid var(--overlay);
+            transition: all 0.2s ease;
+        }
+
+        .shortcut-card:hover {
+            border-color: var(--mauve);
+            transform: translateY(-2px);
+        }
+
+        kbd {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--crust);
+            color: var(--teal);
+            border: 1px solid var(--overlay);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--surface);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--overlay);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container overflow-hidden">
+        <!-- Header -->
+        <header class="p-8 border-b border-white/5 flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight flex items-center gap-3">
+                    <span class="text-mauve"><i class="fa-solid fa-keyboard"></i></span> Guía de Atajos
+                </h1>
+                <p class="text-subtext text-sm mt-1">Referencia rápida para Sway & Terminal</p>
+            </div>
+            <div class="flex bg-crust/50 p-1 rounded-xl border border-white/5">
+                <button onclick="setTab('system')" id="btn-system"
+                    class="tab-btn active px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2">
+                    <i class="fa-solid fa-desktop"></i> Sistema
+                </button>
+                <button onclick="setTab('tmux')" id="btn-tmux"
+                    class="tab-btn px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2">
+                    <i class="fa-solid fa-terminal"></i> Tmux
+                </button>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-hidden relative">
+
+            <!-- SYSTEM TAB -->
+            <div id="tab-system" class="tab-content active h-full p-8 px-12">
+                <div class="grid grid-cols-2 gap-x-12 gap-y-8 pb-8">
+                    <!-- Windows & Layout -->
+                    <div class="space-y-4">
+                        <h2
+                            class="text-[10px] font-black uppercase tracking-[3px] text-mauve/60 px-2 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-mauve"></span> VENTANAS & LAYOUT
+                        </h2>
+                        <div class="space-y-2.5">
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Cerrar
+                                    Ventana</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">Super
+                                    + Q</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Foco
+                                    (Navegar)</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">Super
+                                    + HJKL</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Mover
+                                    Ventana</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">Mod+Shift
+                                    + HJKL</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Alternar
+                                    Layout</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">Mod+Shift
+                                    + E</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Modo
+                                    Flotante</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">Mod+Shift
+                                    + Spc</kbd>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aplicaciones Principales -->
+                    <div class="space-y-4">
+                        <h2
+                            class="text-[10px] font-black uppercase tracking-[3px] text-blue/60 px-2 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue"></span> APLICACIONES
+                        </h2>
+                        <div class="space-y-2.5">
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Terminal</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-blue/20">Super
+                                    + Enter</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Navegador</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-blue/20">Super
+                                    + B</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Yazi
+                                    (File Manager)</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-blue/20">Super
+                                    + E</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Buscador
+                                    Apps</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-blue/20">Super
+                                    + D</kbd>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sistema & Dashboards -->
+                    <div class="space-y-4">
+                        <h2
+                            class="text-[10px] font-black uppercase tracking-[3px] text-teal/60 px-2 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-teal"></span> DASHBOARDS
+                        </h2>
+                        <div class="space-y-2.5">
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Asistente
+                                    IA</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-teal/20">Super
+                                    + I</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Antigravity
+                                    Manager</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-teal/20">Super
+                                    + G</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Esta
+                                    Guía</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-teal/20">Mod+Shift
+                                    + A</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Notificaciones</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-teal/20">Super
+                                    + N</kbd>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Utilidades & Media -->
+                    <div class="space-y-4">
+                        <h2
+                            class="text-[10px] font-black uppercase tracking-[3px] text-yellow/60 px-2 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-yellow"></span> UTILIDADES
+                        </h2>
+                        <div class="space-y-2.5">
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Captura
+                                    Full</span>
+                                <kbd
+                                    class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-yellow/20">Print</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Captura
+                                    Area</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-yellow/20">Mod+Shift
+                                    + S</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Menú
+                                    Salida</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-yellow/20">Super
+                                    + X</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Multimedia</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-yellow/20">Super
+                                    + P/ [ / ]</kbd>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TMUX TAB -->
+            <div id="tab-tmux" class="tab-content h-full p-8 px-12">
+                <div class="grid grid-cols-2 gap-x-12 gap-y-8 pb-8">
+                    <!-- Sessions & Help -->
+                    <div class="space-y-4">
+                        <h2
+                            class="text-[10px] font-black uppercase tracking-[3px] text-blue/60 px-2 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue"></span> CONTROL MAESTRO
+                        </h2>
+                        <div class="space-y-2.5">
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Listar
+                                    Sesiones</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-blue/20">C-b +
+                                    S</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Atajos
+                                    Rápidos</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-blue/20">C-b +
+                                    ?</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Reiniciar
+                                    Config</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-blue/20">C-b +
+                                    R</kbd>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panes -->
+                    <div class="space-y-4">
+                        <h2
+                            class="text-[10px] font-black uppercase tracking-[3px] text-mauve/60 px-2 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-mauve"></span> PANELES (PANES)
+                        </h2>
+                        <div class="space-y-2.5">
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Dividir
+                                    Vert.</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">C-b +
+                                    |</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Dividir
+                                    Horiz.</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">C-b +
+                                    -</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Navegar
+                                    Panes</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">Alt +
+                                    HJKL</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span
+                                    class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Redimensionar</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-mauve/20">C-b +
+                                    HJKL</kbd>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Windows -->
+                    <div class="space-y-4">
+                        <h2
+                            class="text-[10px] font-black uppercase tracking-[3px] text-teal/60 px-2 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-teal"></span> VENTANAS
+                        </h2>
+                        <div class="space-y-2.5">
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Nueva
+                                    Ventana</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-teal/20">C-b +
+                                    C</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Sig.
+                                    Ventana</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-teal/20">C-b +
+                                    N</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Prev.
+                                    Ventana</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-teal/20">C-b +
+                                    P</kbd>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Operations -->
+                    <div class="space-y-4">
+                        <h2
+                            class="text-[10px] font-black uppercase tracking-[3px] text-yellow/60 px-2 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-yellow"></span> OPERACIONES
+                        </h2>
+                        <div class="space-y-2.5">
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Zoom
+                                    Panel</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-yellow/20">C-b
+                                    + Z</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Modo
+                                    Copia</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-yellow/20">C-b
+                                    + [</kbd>
+                            </div>
+                            <div class="shortcut-card p-3.5 rounded-2xl flex justify-between items-center group">
+                                <span class="text-sm font-semibold opacity-70 group-hover:opacity-100 transition">Sinc.
+                                    Panes</span>
+                                <kbd class="text-[10px] px-2.5 py-1.5 rounded-lg shadow-sm border border-yellow/20">C-b
+                                    + Y</kbd>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer
+            class="p-6 bg-crust border-t border-white/5 flex items-center justify-between text-[10px] opacity-40 font-bold uppercase tracking-[2px]">
+            <span>Sway Liviano Environment</span>
+            <span>Prefijo Tmux: Ctrl+B</span>
+        </footer>
+    </div>
+
+    <script>
+        function setTab(tab) {
+            // Panels
+            document.getElementById('tab-system').classList.remove('active');
+            document.getElementById('tab-tmux').classList.remove('active');
+            document.getElementById(`tab-${tab}`).classList.add('active');
+
+            // Buttons
+            document.getElementById('btn-system').classList.remove('active', 'text-mauve', 'bg-white/5');
+            document.getElementById('btn-tmux').classList.remove('active', 'text-mauve', 'bg-white/5');
+
+            const activeBtn = document.getElementById(`btn-${tab}`);
+            activeBtn.classList.add('active', 'text-mauve', 'bg-white/5');
+        }
+
+        // Close on Escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                window.close();
+            }
+        });
+    </script>
+</body>
+
+</html>

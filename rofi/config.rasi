@@ -1,0 +1,76 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: " ";
+}
+
+* {
+    bg: #1e1e2ee6;
+    fg: #cdd6f4;
+    accent: #cba6f7;
+    selected: #313244;
+}
+
+window {
+    width: 350px;
+    height: 450px;
+    location: west;
+    anchor: west;
+    x-offset: 15px;
+    background-color: @bg;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 15px;
+}
+
+mainbox {
+    background-color: transparent;
+    padding: 15px;
+    children: [ inputbar, listview];
+}
+
+inputbar {
+    background-color: @selected;
+    padding: 10px;
+    border-radius: 10px;
+    children: [ prompt, entry];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+listview {
+    background-color: transparent;
+    margin: 10px 0 0;
+    spacing: 5px;
+}
+
+element {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: @accent;
+}
+
+element-icon {
+    size: 28px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+

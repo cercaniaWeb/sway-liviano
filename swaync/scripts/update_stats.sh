@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CONFIG_FILE="/home/lro/.config/swaync/config.json"
-SCRIPTS_DIR="/home/lro/.config/swaync/scripts"
+CONFIG_FILE="/home/lrs/.config/swaync/config.json"
+SCRIPTS_DIR="/home/lrs/.config/swaync/scripts"
 
 while true; do
     # Get current stats
