@@ -100,6 +100,7 @@ link_file "$DOTFILES_DIR/fish/config.fish" "$CONFIG_DIR/fish/config.fish"
 link_file "$DOTFILES_DIR/alacritty/alacritty.toml" "$CONFIG_DIR/alacritty/alacritty.toml"
 link_file "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 link_file "$DOTFILES_DIR/rofi" "$CONFIG_DIR/rofi"
+link_file "$DOTFILES_DIR/yazi" "$CONFIG_DIR/yazi" # Añadido para yazi
 link_file "$DOTFILES_DIR/dashboard" "$HOME/sway-liviano/dashboard" # Mantiene rutas exactas que tienes en config
 link_file "$DOTFILES_DIR/bin/micctl" "$HOME/.local/bin/micctl"
 
